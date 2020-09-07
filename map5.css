@@ -1,0 +1,515 @@
+@font-face {
+    font-family: 'LillyBelle';
+    src: url(fonts/LillyBelle_2.ttf ) format("truetype");
+}
+
+@font-face {
+    font-family: 'Superspace';
+    src: url(fonts/Superspace.ttf ) format("truetype");
+}
+
+@font-face {
+    font-family: 'THSarabun';
+    src: url(fonts/THSarabun.ttf ) format("truetype");
+}
+
+body {
+    font-family: 'Superspace';
+}
+
+.header {
+    background-color: #dfb8d7;
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+}
+
+.grid-container {
+    position: relative;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 250px 250px;
+    grid-gap: 40px;
+}
+
+.grid-container-map5 {
+    position: relative;
+    padding-top: 100px;
+    padding-right: 30px;
+    padding-left: 10px;
+    padding-bottom: 300px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
+    grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
+    grid-gap: 100px;
+    margin-left: -160px;
+}
+
+#m5-circle1 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle2 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle3 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle4 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle5 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle6 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle7 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle8 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle9 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+#m5-circle10 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
+}
+
+
+/*long arrow from s to 1*/
+
+.m5-arrow-s-1:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(140deg);
+}
+
+.m5-arrow-s-1::before {
+    width: 210px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 180px;
+    margin-left: -360px;
+    transform: rotate(140deg);
+}
+
+
+/*long arrow from s to 2*/
+
+.m5-arrow-s-2:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(40deg);
+}
+
+.m5-arrow-s-2::before {
+    width: 210px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -30px;
+    margin-left: -70px;
+    transform: rotate(40deg);
+}
+
+
+/*long arrow from s to 3*/
+
+.m5-arrow-s-3:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(90deg);
+}
+
+.m5-arrow-s-3::before {
+    width: 250px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 80px;
+    margin-left: 70px;
+    transform: rotate(90deg);
+}
+
+
+/*long arrow from 2 to 3*/
+
+.m5-arrow-2-3:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(140deg);
+}
+
+.m5-arrow-2-3::before {
+    width: 210px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 190px;
+    margin-left: -360px;
+    transform: rotate(140deg);
+}
+
+
+/*long arrow from 3 to 4*/
+
+.m5-arrow-3-4:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(140deg);
+}
+
+.m5-arrow-3-4::before {
+    width: 210px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 190px;
+    margin-left: -360px;
+    transform: rotate(140deg);
+}
+
+
+/*long arrow from 4 to 6*/
+
+.m5-arrow-4-6:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(50deg);
+}
+
+.m5-arrow-4-6::before {
+    width: 210px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 190px;
+    margin-left: -60px;
+    transform: rotate(50deg);
+}
+
+
+/*long arrow from 2 to 5*/
+
+.m5-arrow-2-5:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(70deg);
+}
+
+.m5-arrow-2-5::before {
+    width: 280px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -120px;
+    margin-left: -350px;
+    transform: rotate(70deg);
+}
+
+
+/*long arrow from 6 to 8*/
+
+.m5-arrow-6-8:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(120deg);
+}
+
+.m5-arrow-6-8::before {
+    width: 200px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -80px;
+    margin-left: -200px;
+    transform: rotate(120deg);
+}
+
+
+/*long arrow from 6 to g*/
+
+.m5-arrow-6-g:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(70deg);
+}
+
+.m5-arrow-6-g::before {
+    width: 180px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -80px;
+    margin-left: -10px;
+    transform: rotate(70deg);
+}
+
+
+/*long arrow from 3 to 7*/
+
+.m5-arrow-3-7:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(60deg);
+}
+
+.m5-arrow-3-7::before {
+    width: 380px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -480px;
+    margin-left: -10px;
+    transform: rotate(60deg);
+}
+
+
+/*long arrow from 7 to g*/
+
+.m5-arrow-7-g:after {
+    content: "";
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-top: 120px;
+    margin-left: 232px;
+    transform: rotate(120deg);
+}
+
+.m5-arrow-7-g::before {
+    width: 200px;
+    height: 5px;
+    background: black;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -60px;
+    margin-left: -150px;
+    transform: rotate(120deg);
+}
