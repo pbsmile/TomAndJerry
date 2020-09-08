@@ -15,6 +15,7 @@
 
 body {
     font-family: 'Superspace';
+    background-color: rgb(35, 22, 51);
 }
 
 .header {
@@ -22,6 +23,14 @@ body {
     text-align: center;
     padding: 20px;
     font-size: 40px;
+}
+
+.time-color {
+    color: rgb(241, 187, 38);
+}
+
+.fuel-color {
+    color: rgb(38, 241, 99);
 }
 
 .grid-container {
@@ -48,6 +57,26 @@ body {
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
     margin-left: -160px;
+}
+
+#m1-circle0 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
 }
 
 #m1-circle1 {
