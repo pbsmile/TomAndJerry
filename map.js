@@ -1,4 +1,4 @@
-export let mappb = [
+let map = [
     {
         startPlanet:0,
         endPlanet:6,
@@ -78,3 +78,4 @@ export let mappb = [
     },
 ];
 
+module.exports = {map};
