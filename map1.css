@@ -1,4 +1,4 @@
-@font-face {
+    @font-face {
     font-family: 'LillyBelle';
     src: url(fonts/LillyBelle_2.ttf ) format("truetype");
 }
@@ -16,6 +16,9 @@
 body {
     font-family: 'Superspace';
     background-color: rgb(35, 22, 51);
+    transform: scale(0.4, 0.4);
+    
+
 }
 
 .header {
