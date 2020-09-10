@@ -46,7 +46,7 @@
     <div class="col2">
       <div class="container-2">
 
-        <div class="btn btn-two">
+        <div class="btn btn-two" onclick="reset()">
           <span>Reset</span>
         </div>
       </div>
@@ -64,9 +64,9 @@
       <option value="2">2x</option>
       <option value="3">3x</option>
     </select>
-    <div class="shfuel">Fuel :</div>
-    <div class="shtime">Time :</div>
-    <div class="shpath">Path : </div>
+    <div id="fuel" class="shfuel">Fuel : </div>
+    <div id="time" class="shtime">Time : </div>
+    <div id="path" class="shpath">Path : </div>
     <h1 class="head">Star map</h1>
     <h3 class="step">Step &nbsp; : &nbsp; Press random map &nbsp; > &nbsp; Select search &nbsp; > &nbsp; Start</h3>
     <div id="MapObj" width="50%" height="100%">   </div>
