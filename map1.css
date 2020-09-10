@@ -23,7 +23,7 @@
     }
     
     .m1-rescale {
-        transform: scale(0.5, 0.5);
+        transform: scale(0.45, 0.45);
         transform-origin: 0 0;
         margin-top: 50px;
     }
@@ -57,6 +57,7 @@
     
     .grid-container-map1 {
         position: fixed;
+        top: 20%;
         /* padding-top: 100px; */
         padding-right: 30px;
         padding-left: 100px;
@@ -66,7 +67,7 @@
         grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
         grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
         grid-gap: 100px;
-        margin-left: -50%;
+        margin-left: 0%;
     }
     
     #m1-circle0 {
