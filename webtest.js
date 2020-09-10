@@ -563,32 +563,35 @@ function randommap() {
     if(map == 1){
         thisMap = mapstruct[0];
         x = "Map Pakbung";
-        mapHtml = "map1.html";
-        mapEle = "m1";
+        document.getElementById("map1").style.visibility = "visible"
+        document.getElementById("map2").style.visibility = "hidden"
+        document.getElementById("map3").style.visibility = "hidden"
+        // mapHtml = "map1.html";
+        // mapEle = "m1";
     }
     if (map == 2) {
         thisMap = mapstruct[1];
         x = "Map Nice";
-        mapHtml = "map2.html";
-        mapEle = "m2";
+        // mapHtml = "map2.html";
+        // mapEle = "m2";
     }
     if (map == 3) {
         thisMap = mapstruct[2];
         x = "Map Namob";
-        mapHtml = "map3.html";
-        mapEle = "m3";
+        // mapHtml = "map3.html";
+        // mapEle = "m3";
     }
     if (map == 4) {
         thisMap = mapstruct[3];
         x = "Map Aon";
-        mapHtml = "map4.html";
-        mapEle = "m4";
+        // mapHtml = "map4.html";
+        // mapEle = "m4";
     }
     if (map == 5) {
         thisMap = mapstruct[4];
         x = "Map Little";
-        mapHtml = "map5.html";
-        mapEle = "m5";
+        // mapHtml = "map5.html";
+        // mapEle = "m5";
     }
     document.getElementById('map').textContent = x
         //document.getElementById("MapObj").innerHTML = '<object data='+ mapHtml +'  width="100%" height="100%"></object>'

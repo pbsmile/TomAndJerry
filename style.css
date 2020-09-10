@@ -112,7 +112,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 25%;
+    top: 30%;
     background-color: #000;
     padding: 15px 20px;
     radius: 3px;
@@ -125,7 +125,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 35%;
+    top: 40%;
     background-color: #000;
     padding: 7px 20px;
     radius: 3px;
@@ -138,7 +138,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 42%;
+    top: 47%;
     background-color: #000;
     padding: 7px 20px;
     radius: 3px;
@@ -150,7 +150,7 @@ html {
 .shfuel {
     position: absolute;
     left: 70%;
-    top: 50%;
+    top: 55%;
     border: none;
     color: #cedebd;
 }
@@ -158,15 +158,28 @@ html {
 .shtime {
     position: absolute;
     left: 70%;
-    top: 55%;
+    top: 60%;
     border: none;
     color: #cedebd;
 }
-
 .shpath {
     position: absolute;
     left: 70%;
-    top: 60%;
+    top: 65%;
+    border: none;
+    color: #cedebd;
+}
+.shexctime {
+    position: absolute;
+    left: 70%;
+    top: 70%;
+    border: none;
+    color: #cedebd;
+}
+.shresource {
+    position: absolute;
+    left: 70%;
+    top: 75%;
     border: none;
     color: #cedebd;
 }
@@ -174,14 +187,14 @@ html {
 .col {
     height: 100%;
     position: absolute;
-    left: 65%;
-    top: 57%;
+    left: 64%;
+    top: 70%;
 }
 
 .col2 {
     height: 100%;
     position: absolute;
-    left: 65%;
+    left: 74%;
     top: 70%;
 }
 
@@ -198,9 +211,9 @@ div[class*=containerbtn] {
 .btn {
     position: relative;
     color: white;
-    width: 256px;
-    height: 64px;
-    line-height: 64px;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
     transition: all 0.3s;
     span {
         transition: all 0.3s;
@@ -248,8 +261,8 @@ div[class*=containerbtn] {
 
 .btn-two:hover::after,
 .btn-two:hover::before {
-    left: 96px;
-    width: 64px;
+    left: 20px;
+    width: 60px;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
