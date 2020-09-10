@@ -97,10 +97,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:1,
-                        useFuel:1
+                        useFuel:2,
+                        time:4,
                     },
                     {
                         planetNumber:5,
+                        time:0,
                         useFuel:2
                     },
                 ]
@@ -110,10 +112,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:2,
+                        time:2,
                         useFuel:1
                     },
                     {
                         planetNumber:3,
+                        time:3,
                         useFuel:2
                     },
                 ]
@@ -123,6 +127,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:0,
                         useFuel:2
                     },
                 ]
@@ -132,14 +137,17 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:4,
+                        time:2,
                         useFuel:1
                     },
                     {
                         planetNumber:5,
+                        time:0,
                         useFuel:2
                     },
                     {
                         planetNumber:6,
+                        time:0,
                         useFuel:2
                     }
                 ]
@@ -149,6 +157,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:5,
+                        time:0,
                         useFuel:1
                     }
                 ]
@@ -158,6 +167,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:0,
                         useFuel:8
                     }
                 ]
@@ -179,10 +189,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:1,
+                        time:1,
                         useFuel:4
                     },
                     {
                         planetNumber:2,
+                        time:2,
                         useFuel:3
                     },
                 ]
@@ -192,10 +204,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:3,
+                        time:2,
                         useFuel:1
                     },
                     {
                         planetNumber:4,
+                        time:3,
                         useFuel:1
                     },
                 ]
@@ -205,10 +219,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:5,
+                        time:2,
                         useFuel:2
                     },
                     {
                         planetNumber:6,
+                        time:4,
                         useFuel:8
                     },
                 ]
@@ -218,10 +234,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:4,
+                        time:3,
                         useFuel:3
                     },
                     {
                         planetNumber:5,
+                        time:2,
                         useFuel:1
                     },
                     
@@ -232,6 +250,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:4,
                         useFuel:5
                     }
                 ]
@@ -241,6 +260,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:4,
                         useFuel:2
                     }
                 ]
@@ -262,14 +282,17 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:1,
+                        time:1,
                         useFuel:3
                     },
                     {
                         planetNumber:2,
+                        time:0,
                         useFuel:3
                     },
                     {
                         planetNumber:3,
+                        time:3,
                         useFuel:3
                     },
                     
@@ -280,10 +303,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:2,
                         useFuel:4
                     },
                     {
                         planetNumber:10,
+                        time:0,
                         useFuel:6
                     },
                 ]
@@ -293,6 +318,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:6,
+                        time:2,
                         useFuel:4
                     },
                     
@@ -303,10 +329,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:4,
+                        time:2,
                         useFuel:1
                     },
                     {
                         planetNumber:5,
+                        time:4,
                         useFuel:3
                     },
                     
@@ -321,10 +349,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:7,
+                        time:2,
                         useFuel:2
                     },
                     {
                         planetNumber:6,
+                        time:2,
                         useFuel:4
                     },
                 ]
@@ -334,10 +364,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:8,
+                        time:1,
                         useFuel:2
                     },
                     {
                         planetNumber:10,
+                        time:0,
                         useFuel:3
                     },
                 ]
@@ -347,6 +379,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:8,
+                        time:1,
                         useFuel:2
                     },
                 ]
@@ -356,10 +389,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:9,
+                        time:0,
                         useFuel:1
                     },
                     {
                         planetNumber:12,
+                        time:3,
                         useFuel:3
                     },
                 ]
@@ -369,6 +404,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:11,
+                        time:1,
                         useFuel:2
                     },
                 ]
@@ -378,6 +414,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:12,
+                        time:3,
                         useFuel:2
                     },
                 ]
@@ -387,10 +424,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:12,
+                        time:3,
                         useFuel:5
                     },
                     {
                         planetNumber:14,
+                        time:0,
                         useFuel:3
                     },
                 ]
@@ -400,6 +439,7 @@ let map = [
                 linkedPlanets:[
                     {
                     planetNumber:13,
+                    time:2,
                     useFuel:1
                     },
                 ]
@@ -409,6 +449,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:14,
+                        time:0,
                         useFuel:2
                     },
                 ]
@@ -430,14 +471,17 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:1,
+                        time:2,
                         useFuel:1
                     },
                     {
                         planetNumber:2,
+                        time:3,
                         useFuel:1
                     },
                     {
                         planetNumber:4,
+                        time:1,
                         useFuel:3
                     },
                 ]
@@ -451,10 +495,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:4,
+                        time:1,
                         useFuel:1
                     },
                     {
                         planetNumber:5,
+                        time:4,
                         useFuel:1
                     },
                 ]
@@ -464,10 +510,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:4,
+                        time:1,
                         useFuel:1
                     },
                     {
                         planetNumber:6,
+                        time:5,
                         useFuel:2
                     },
                     
@@ -478,6 +526,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:7,
+                        time:2,
                         useFuel:5
                     }
                 ]
@@ -491,10 +540,12 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:8,
+                        time:2,
                         useFuel:4
                     },
                     {
                         planetNumber:9,
+                        time:0,
                         useFuel:3
                     },
                 ]
@@ -504,6 +555,7 @@ let map = [
                 linkedPlanets:[
                     {
                         planetNumber:9,
+                        time:0,
                         useFuel:3
                     },
                 ]
