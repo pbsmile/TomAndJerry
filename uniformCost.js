@@ -11,7 +11,7 @@ class searchNode {
         if (this.parent === null) {
             return [this.state, this.action];
         } else {
-            return this.parent.path() + " -> " + [this.state, this.action.time];
+            return this.parent.path() + " -> " + [this.state, this.action.time,this.action.useFuel];
         }
     }
 
@@ -158,7 +158,7 @@ function goalTest(state) {
 
 function actions(state) {
     // Returns an array of objects
-    // [{ name: string, cost: integer }, ... ]
+    // [{ useFuel: int, time: integer,planetNumber:int }, ... ]
     return mapPlanets.get(state);
 }
 
