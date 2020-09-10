@@ -12,9 +12,15 @@
         font-family: 'THSarabun';
         src: url(fonts/THSarabun.ttf ) format("truetype");
     }
-    /* .m1-disable {
+    
+    .m1-disable {
         visibility: hidden;
-    } */
+    }
+    
+    body {
+        font-family: 'Superspace';
+        transform: scale(0.5, 0.5);
+    }
     
     .header {
         background-color: #dfb8d7;
