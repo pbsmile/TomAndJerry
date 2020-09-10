@@ -1,5 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif;
+    /* transform-origin: 50% 0%; */
 }
 
 pre {
@@ -290,6 +291,10 @@ title {
     background: -webkit-linear-gradient(white, #38495a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+#wrapper {
+    top: 0;
 }
 
 #stars {

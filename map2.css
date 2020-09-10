@@ -23,7 +23,13 @@ html {
 
 body {
     font-family: 'Superspace';
+    /* transform: scale(0.5, 0.5); */
+}
+
+.m2-rescale {
     transform: scale(0.5, 0.5);
+    transform-origin: 0 0;
+    margin-top: 50px;
 }
 
 .header {
