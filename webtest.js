@@ -559,37 +559,59 @@ function resetEle()
 function randommap() {
     var map = Math.floor(Math.random() * 5) + 1;
     var x = "";
-    
+    // document.getElementById("map5").style.visibility = "visible"
     if(map == 1){
         thisMap = mapstruct[0];
         x = "Map Pakbung";
         document.getElementById("map1").style.visibility = "visible"
         document.getElementById("map2").style.visibility = "hidden"
         document.getElementById("map3").style.visibility = "hidden"
+        document.getElementById("map4").style.visibility = "hidden"
+        document.getElementById("map5").style.visibility = "hidden"
         // mapHtml = "map1.html";
         // mapEle = "m1";
     }
     if (map == 2) {
         thisMap = mapstruct[1];
         x = "Map Nice";
+        document.getElementById("map1").style.visibility = "hidden"
+        document.getElementById("map2").style.visibility = "visible"
+        document.getElementById("map3").style.visibility = "hidden"
+        document.getElementById("map4").style.visibility = "hidden"
+        document.getElementById("map5").style.visibility = "hidden"
         // mapHtml = "map2.html";
         // mapEle = "m2";
     }
     if (map == 3) {
         thisMap = mapstruct[2];
         x = "Map Namob";
+        document.getElementById("map1").style.visibility = "hidden"
+        document.getElementById("map2").style.visibility = "hidden"
+        document.getElementById("map3").style.visibility = "visible"
+        document.getElementById("map4").style.visibility = "hidden"
+        document.getElementById("map5").style.visibility = "hidden"
         // mapHtml = "map3.html";
         // mapEle = "m3";
     }
     if (map == 4) {
         thisMap = mapstruct[3];
         x = "Map Aon";
+        document.getElementById("map1").style.visibility = "hidden"
+        document.getElementById("map2").style.visibility = "hidden"
+        document.getElementById("map3").style.visibility = "hidden"
+        document.getElementById("map4").style.visibility = "visible"
+        document.getElementById("map5").style.visibility = "hidden"
         // mapHtml = "map4.html";
         // mapEle = "m4";
     }
     if (map == 5) {
         thisMap = mapstruct[4];
         x = "Map Little";
+        document.getElementById("map1").style.visibility = "hidden"
+        document.getElementById("map2").style.visibility = "hidden"
+        document.getElementById("map3").style.visibility = "hidden"
+        document.getElementById("map4").style.visibility = "hidden"
+        document.getElementById("map5").style.visibility = "visible"
         // mapHtml = "map5.html";
         // mapEle = "m5";
     }

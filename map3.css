@@ -18,7 +18,7 @@ html {
 }
 
 .m3-disable {
-    visibility: visible;
+    visibility: hidden;
 }
 
 body {
@@ -61,7 +61,7 @@ body {
 
 .grid-container-map3 {
     position: fixed;
-    top: 20%;
+    top: 25%;
     /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;
@@ -71,7 +71,7 @@ body {
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: 0%;
+    margin-left: 10%;
 }
 
 #m3-circle0 {

@@ -119,6 +119,7 @@ html {
     font-size: 16px;
     border: none;
     color: #cedebd;
+    cursor: pointer;
 }
 
 .searchbtn {
@@ -132,6 +133,7 @@ html {
     font-size: 16px;
     border: none;
     color: #cedebd;
+    cursor: pointer;
 }
 
 .delaybtn {
@@ -145,6 +147,7 @@ html {
     font-size: 16px;
     border: none;
     color: #cedebd;
+    cursor: pointer;
 }
 
 .shfuel {
@@ -215,6 +218,7 @@ div[class*=containerbtn] {
     height: 60px;
     line-height: 60px;
     transition: all 0.3s;
+    cursor: pointer;
     span {
         transition: all 0.3s;
         tranform: scale(1, 1);
