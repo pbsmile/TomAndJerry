@@ -14,7 +14,7 @@
 }
 
 html{
-    height: 1vh;
+    overflow: hidden;
 }
 
 body {

@@ -1,4 +1,8 @@
-let map = [
+document.addEventListener('DOMContentLoaded',init);
+
+
+/*------------------------- map is here -------------------------*/
+let mapstruct = [
     {
         startPlanet:0,
         endPlanet:6,
@@ -572,4 +576,175 @@ let map = [
     },
 ];
 
-module.exports = {map};
+
+function init(){
+    randommap();
+    reset();
+}
+
+
+function reset(){
+    window.thisMap = mapstruct[0];
+    window.delay = 3000;
+    window.strFuel = "";
+    window.strTime = "";
+    window.strPath = "";
+    window.fuelEle = document.getElementById("fuel");
+    window.timeEle = document.getElementById("time");
+    window.pathEle = document.getElementById("path");
+    window.searchEle = document.getElementById('search');
+    window.delayEle = document.getElementById('delay');
+    
+    fuelEle.innerHTML = "Fuel : ";
+    timeEle.innerHTML = "Time : ";
+    pathEle.innerHTML = "Path : ";
+    searchEle.selectedIndex = "1";
+    delayEle.selectedIndex = "1";
+}
+
+function randommap() {
+    var map = Math.floor(Math.random() * 5) + 1;
+    var x = ""
+    var mapHtml = ""
+    
+    if(map == 1){
+        thisMap = mapstruct[0];
+        x = "Map Pakbung"
+        mapHtml = "map1.html"
+    }
+    if(map == 2){
+        thisMap = mapstruct[1];
+        x = "Map Nice"
+        mapHtml = "map2.html"
+    }
+    if(map == 3){
+        thisMap = mapstruct[2];
+        x = "Map Namob"
+        mapHtml = "map3.html"
+    }
+    if(map == 4){
+        thisMap = mapstruct[3];
+        x = "Map Aon"
+        mapHtml = "map4.html"
+    }
+    if(map == 5){
+        thisMap = mapstruct[4];
+        x = "Map Little"
+        mapHtml = "map5.html"
+    }
+    document.getElementById('map').textContent = x
+    document.getElementById("MapObj").innerHTML = '<object data='+ mapHtml +'  width="100%" height="100%"></object>'
+}
+
+function start()
+{    
+    var strSearch = searchEle.options[searchEle.selectedIndex].value;
+    var strDelay = delayEle.options[delayEle.selectedIndex].value;
+    if(strDelay == '1') delay = 3000;
+    else if(strDelay == '2') delay = 1500;
+    else if(strDelay == '3') delay = 1000;
+
+    if(strSearch == 'iterative'){
+        iterativeDeepeningSearch(thisMap);
+    }
+    else if(strSearch == 'uniform'){
+        unc(thisMap);
+    }
+}
+
+
+
+
+/*--------------- iterative deepening search is here --------------*/
+var bottomReached = false;
+
+function iterativeDeepeningSearch(mapUse){   
+    var depth = 1;
+    const start = mapUse.startPlanet;
+    const goal = mapUse.endPlanet;
+    const fuelLimit = mapUse.fuelLimit;
+    const planets = mapUse.Planets;
+    var currentFuel = 0;
+    var time = 0;
+ 
+    //increase depth here
+    while (!bottomReached)
+    {
+        bottomReached = true; 
+        var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
+        if (result!= null){
+            return result;
+        }
+        depth += 1;
+        console.log("Increasing depth to " + depth);
+    }
+
+    return null;
+}
+
+//Search each iteration here
+function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time){
+    if(currentFuel <= fuelLimit){
+        console.log("Visiting Planet " + currentPlanet);
+        nodeVisited(currentPlanet);
+        if (currentPlanet === goal) {
+            // We have found the goal node we're searching for
+            console.log("Tom has found Jerry!");
+            return currentPlanet;
+        }
+        if (currentDepth === maxDepth) {
+            console.log("Current maximum depth reached, returning...");
+            // We have reached the end for this depth...
+            if (planets[currentPlanet].linkedPlanets.length > 0) {
+                //...but we have not yet reached the bottom of the tree
+                bottomReached = false;
+                currentFuel = 0;
+                time = 0
+                console.log("Haven't reach bottom yet.");
+            }
+            return null;
+        }
+        // Recurse with all children
+        for (var i = 0; i < planets[currentPlanet].linkedPlanets.length; i++) {
+            currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
+            time += planets[currentPlanet].time;
+            console.log("this planet time: "+planets[currentPlanet].time);
+            console.log("Current Fuel usage: "+currentFuel+", Time: "+time);
+            var result = deepeningSearch(planets[currentPlanet].linkedPlanets[i].planetNumber, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
+            if (result != null) {
+                // We've found the goal node while going down that child
+                return result;
+            }
+        }
+    }
+    else{
+        console.log("Not enough fuel finding others way...");
+            // We have reached the end for this depth...
+            if (planets[currentPlanet].linkedPlanets.length > 0) {
+                //...but we have not yet reached the bottom of the tree
+                bottomReached = false;
+                currentFuel = 0;
+                time = 0
+                console.log("Haven't reach bottom yet.");
+            }
+            return null;
+    }
+}
+
+function nodeVisited(currentNode){
+    return null;
+}
+
+/*function sleep(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time, i){
+    setTimeout(() => {
+        currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
+        time += planets[currentPlanet].time;
+        console.log("this planet time: "+planets[currentPlanet].time);
+        console.log("Current Fuel usage: "+currentFuel+", Time: "+time);
+        var result = deepeningSearch(currentPlanet, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
+        return result;
+      }, delay);
+    
+}*/
+
+

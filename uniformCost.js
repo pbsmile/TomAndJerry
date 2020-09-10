@@ -11,7 +11,7 @@ class searchNode {
         if (this.parent === null) {
             return [this.state, this.action];
         } else {
-            return this.parent.path() + " -> " + [this.state, this.action.time];
+            return this.parent.path() + " -> " + [this.state, this.action.time,this.action.useFuel];
         }
     }
 
@@ -20,6 +20,14 @@ class searchNode {
             return 0;
         } else {
             return this.parent.pathCost() + this.action.time;
+        }
+    }
+    
+    usedFuel(){
+        if (this.parent===null){
+            return 0;
+        } else{
+            return this.parent.usedFuel()+this.action.useFuel;
         }
     }
 
@@ -41,10 +49,8 @@ let startPlanet=null;
 module.exports.unc = function uniformCost(map) {
     startPlanet = map.startPlanet;
     goalPlanet = map.endPlanet;
+    console.log(map.endPlanet)
     const fuelLimit = map.fuelLimit;
-    let currentFuel = 0;
-    let time = 0;
-    
     for (let i = 0; i < map.Planets.length; i++) {
         mapPlanets.set(i, map.Planets[i].linkedPlanets);
     }
@@ -75,7 +81,7 @@ module.exports.unc = function uniformCost(map) {
     // Add the startPlanet to the Priority Queue.
     priorityQueue.enqueue(new searchNode(null, startPlanet, null));
     let expanded = [];
-    let shortestPath = {state: null, pathCost: null, path: null};
+    let shortestPath = {state: null, pathCost: null, path: null,usedFuel:null};
     while(priorityQueue.length !== 0){
         console.log("priorityQueue: " + priorityQueue.map(function(planet){
             return planet.state;
@@ -104,17 +110,17 @@ module.exports.unc = function uniformCost(map) {
             let newS = successor(parent.state, actionsList[i]);
             let newN = new searchNode(actionsList[i], newS, parent);
             console.log(actionsList[i],parent,newN);
-
             
             // If the goal is found,
             // returns the path to the goal.
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
                 console.log("Continuing search to find optimal path.");
-                if (newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null) {
+                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path();
                     shortestPath.state = newS;
+                    shortestPath.usedFuel=newN.usedFuel();
                 }
             }
 
@@ -144,7 +150,7 @@ module.exports.unc = function uniformCost(map) {
     if (shortestPath.pathCost === null) {
         console.log("Couldn't find path.") 
     } else {
-        console.log(shortestPath.path + " with path cost " + shortestPath.pathCost);
+        console.log(shortestPath.path + " with path cost " + shortestPath.pathCost +"and used fuel are " +shortestPath.usedFuel );
     }
 }  
 function goalTest(state) {
@@ -153,7 +159,7 @@ function goalTest(state) {
 
 function actions(state) {
     // Returns an array of objects
-    // [{ name: string, cost: integer }, ... ]
+    // [{ useFuel: int, time: integer,planetNumber:int }, ... ]
     return mapPlanets.get(state);
 }
 

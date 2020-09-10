@@ -13,10 +13,13 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
+html{
+    overflow: hidden;
+}
+
 body {
     font-family: 'Superspace';
-    transform: scale(0.3, 0.3);
-    
+    transform: scale(0.25, 0.25);
 }
 
 .header {
@@ -48,7 +51,7 @@ body {
 
 .grid-container-map5 {
     position: fixed;
-    top: -100%;
+    top: -140%;
     /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;

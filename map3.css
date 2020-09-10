@@ -13,6 +13,10 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
+html{
+    overflow: hidden;
+}
+
 body {
     font-family: 'Superspace';
     transform: scale(0.4, 0.4);
