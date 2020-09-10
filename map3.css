@@ -18,7 +18,7 @@ html {
 }
 
 .m3-disable {
-    visibility: visible;
+    visibility: hidden;
 }
 
 body {
