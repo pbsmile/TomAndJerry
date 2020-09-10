@@ -13,9 +13,23 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
+html {
+    overflow: hidden;
+}
+
+.m2-disable {
+    visibility: hidden;
+}
+
 body {
     font-family: 'Superspace';
-    transform: scale(0.4, 0.4);
+    /* transform: scale(0.5, 0.5); */
+}
+
+.m2-rescale {
+    transform: scale(0.5, 0.5);
+    transform-origin: 0 0;
+    margin-top: 50px;
 }
 
 .header {
@@ -38,7 +52,7 @@ body {
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
-    padding-left: 80px;
+    padding-left: 100px;
     display: grid;
     justify-content: center;
     grid-template-columns: 250px 250px;
@@ -46,17 +60,18 @@ body {
 }
 
 .grid-container-map2 {
-    position: relative;
-    padding-top: 100px;
+    position: fixed;
+    top: -30%;
+    /* padding-top: 100px; */
     padding-right: 30px;
-    padding-left: 10px;
-    padding-bottom: 300px;
+    padding-left: 100px;
+    /* padding-bottom: 300px; */
     display: grid;
     justify-content: center;
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: -160px;
+    margin-left: -50%;
 }
 
 #m2-circle0 {
