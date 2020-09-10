@@ -13,8 +13,12 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
-html{
+html {
     overflow: hidden;
+}
+
+.m2-disable {
+    visibility: hidden;
 }
 
 body {
