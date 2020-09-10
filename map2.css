@@ -46,17 +46,18 @@ body {
 }
 
 .grid-container-map2 {
-    position: relative;
-    padding-top: 100px;
+    position: fixed;
+    top: -60%;
+    /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;
-    padding-bottom: 300px;
+    /* padding-bottom: 300px; */
     display: grid;
     justify-content: center;
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: -160px;
+    margin-left: -50%;
 }
 
 #m2-circle0 {

@@ -15,7 +15,8 @@
 
 body {
     font-family: 'Superspace';
-    transform: scale(0.4, 0.4);
+    transform: scale(0.3, 0.3);
+    
 }
 
 .header {
@@ -34,7 +35,7 @@ body {
 }
 
 .grid-container {
-    position: relative;
+    /* position: relative; */
     /* padding-top: 50px; */
     padding-right: 30px;
     /* padding-bottom: 50px; */
@@ -46,7 +47,8 @@ body {
 }
 
 .grid-container-map5 {
-    position: relative;
+    position: fixed;
+    top: -100%;
     /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;
@@ -56,7 +58,7 @@ body {
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: -160px;
+    margin-left: -50%;
 }
 
 #m5-circle0 {

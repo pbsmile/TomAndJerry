@@ -13,12 +13,14 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
+html{
+    height: 1vh;
+}
+
 body {
     font-family: 'Superspace';
     background-color: rgb(35, 22, 51);
     transform: scale(0.4, 0.4);
-    
-
 }
 
 .header {
@@ -49,17 +51,18 @@ body {
 }
 
 .grid-container-map1 {
-    position: relative;
-    padding-top: 100px;
+    position: fixed;
+    top: -60%;
+    /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;
-    padding-bottom: 300px;
+    /* padding-bottom: 300px; */
     display: grid;
     justify-content: center;
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: -160px;
+    margin-left: -50%;
 }
 
 #m1-circle0 {
