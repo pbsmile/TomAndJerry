@@ -121,6 +121,9 @@ html {
     color: #cedebd;
     cursor: pointer;
 }
+.randombtn:hover {
+    border: solid 2px white;
+}
 
 .searchbtn {
     width: 200px;
@@ -223,6 +226,11 @@ div[class*=containerbtn] {
         transition: all 0.3s;
         tranform: scale(1, 1);
     }
+}
+
+.btn:active {
+    color: lightslategray;
+    transition: all 0.1s;
 }
 
 .btn::before,
