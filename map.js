@@ -447,7 +447,7 @@ let map = [
           {
             planetNumber: 2,
             time: 0,
-            useFuel: 3,
+            useFuel: 2,
           },
           {
             planetNumber: 3,
@@ -460,11 +460,6 @@ let map = [
         time: 1,
         planetNumber: 1,
         linkedPlanets: [
-          {
-            planetNumber: 6,
-            time: 2,
-            useFuel: 4,
-          },
           {
             planetNumber: 10,
             time: 0,
@@ -563,11 +558,6 @@ let map = [
           {
             planetNumber: 2,
             time: 0,
-            useFuel: 4,
-          },
-          {
-            planetNumber: 1,
-            time: 1,
             useFuel: 4,
           },
           {

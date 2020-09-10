@@ -116,7 +116,7 @@ module.exports.unc = function uniformCost(map) {
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
                 console.log("Continuing search to find optimal path.");
-                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<fuelLimit) {
+                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<=fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path();
                     shortestPath.state = newS;
@@ -150,7 +150,7 @@ module.exports.unc = function uniformCost(map) {
     if (shortestPath.pathCost === null) {
         console.log("Couldn't find path.") 
     } else {
-        console.log(shortestPath.path + " with path cost " + shortestPath.pathCost +"and used fuel are " +shortestPath.usedFuel );
+        console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel );
     }
 }  
 function goalTest(state) {
