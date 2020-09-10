@@ -19,7 +19,7 @@ html{
 
 body {
     font-family: 'Superspace';
-    transform: scale(0.25, 0.25);
+    transform: scale(0.35, 0.35);
 }
 
 .header {
@@ -51,7 +51,7 @@ body {
 
 .grid-container-map5 {
     position: fixed;
-    top: -140%;
+    top: -95%;
     /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;

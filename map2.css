@@ -19,7 +19,7 @@ html{
 
 body {
     font-family: 'Superspace';
-    transform: scale(0.4, 0.4);
+    transform: scale(0.5, 0.5);
 }
 
 .header {
@@ -42,7 +42,7 @@ body {
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 50px;
-    padding-left: 80px;
+    padding-left: 100px;
     display: grid;
     justify-content: center;
     grid-template-columns: 250px 250px;
@@ -51,10 +51,10 @@ body {
 
 .grid-container-map2 {
     position: fixed;
-    top: -60%;
+    top: -30%;
     /* padding-top: 100px; */
     padding-right: 30px;
-    padding-left: 10px;
+    padding-left: 100px;
     /* padding-bottom: 300px; */
     display: grid;
     justify-content: center;
