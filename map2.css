@@ -272,8 +272,8 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -80px;
-    margin-left: -250px;
+    margin-top: -180px;
+    margin-left: -270px;
     transform: rotate(30deg);
 }
 
