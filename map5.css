@@ -13,41 +13,75 @@
     src: url(fonts/THSarabun.ttf ) format("truetype");
 }
 
+html{
+    overflow: hidden;
+}
+
 body {
     font-family: 'Superspace';
+    transform: scale(0.25, 0.25);
 }
 
 .header {
     background-color: #dfb8d7;
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
     font-size: 40px;
 }
 
+.time-color {
+    color: rgb(241, 187, 38);
+}
+
+.fuel-color {
+    color: rgb(38, 241, 99);
+}
+
 .grid-container {
-    position: relative;
-    padding-top: 50px;
+    /* position: relative; */
+    /* padding-top: 50px; */
     padding-right: 30px;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
     padding-left: 80px;
     display: grid;
-    justify-content: center;
-    grid-template-columns: 250px 250px;
+    /* justify-content: center; */
+    /* grid-template-columns: 250px 250px; */
     grid-gap: 40px;
 }
 
 .grid-container-map5 {
-    position: relative;
-    padding-top: 100px;
+    position: fixed;
+    top: -140%;
+    /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 10px;
-    padding-bottom: 300px;
+    /* padding-bottom: 300px; */
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: -160px;
+    margin-left: -50%;
+}
+
+#m5-circle0 {
+    position: relative;
+    width: 120px;
+    /* ความกว้าง */
+    height: 120px;
+    /* ความสูง */
+    background: white;
+    border-style: solid;
+    border-radius: 70px;
+    border-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -55px;
 }
 
 #m5-circle1 {

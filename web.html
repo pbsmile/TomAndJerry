@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="./webtest.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/path/to/parallax.js"></script>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+<<<<<<< HEAD
+<script>
+  function randommap() {
+    var mapnum = Math.floor(Math.random() * 5) + 1;
+    var x = ""
+    var map = ""
+    
+    if(mapnum == 1){
+      x = "Map Pakbung"
+      map = "map1.html"
+    }
+    if(mapnum == 2){
+      x = "Map Nice"
+      map = "map2.html"
+    }
+    if(mapnum == 3){
+      x = "Map Namob"
+      map = "map3.html"
+    }
+    if(mapnum == 4){
+      x = "Map Aon"
+      map = "map4.html"
+    }
+    if(mapnum == 5){
+      x = "Map Little"
+      map = "map5.html"
+    }
+    document.getElementById('map').textContent = x
+    document.getElementById("MapObj").innerHTML = '<object data='+ map +'></object>'
+    //document.getElementById("MapObj").innerHTML = '<iframe src='+ map +'></iframe>'
+    
+  }
+</script>
+=======
+>>>>>>> e8ad2018a17ebfd202b83960fb781520c7179852
+  <title>Tom and Jerry</title>
+
+</head>
+<body>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front center">
+      Tom and Jerry 
+      <pre> (Mouse on to show all members)</pre>
+    </div>
+    <div class="flip-card-back">
+      <table class="center">
+        <tr>
+          <td>60010134,</td><td>60010173,</td><td>60010242,</td><td>60010549,</td><td>60010603</td>
+        </tr>
+        <tr>
+          <td>Little</td><td>Aon</td><td>Nice</td><td>Pakbung</td><td>Namob</td>
+        </tr>
+      </table>
+  </div>
+  </div>
+  
+  <!--<div id="head">Tom and Jerry</div>-->
+</div>
+<div style="height: 40px;"></div>
+<div id="map">0</div>
+  <div>
+    <div class="col">
+      <div class="container-2">
+        <div class="btn btn-two" onclick="start()">
+          <span>Start</span>
+        </div>
+      </div>
+    </div>
+    <div class="col2">
+      <div class="container-2">
+
+        <div class="btn btn-two" onclick="reset()">
+          <span>Reset</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="randombtn" onclick="randommap()">Random map</button>
+    <select id="search" name="search" class="searchbtn">
+      <option disabled>Select Search</option>
+      <option value="iterative">Iterative Search</option>
+      <option value="uniform">Uniform Cost Search</option>
+    </select>
+    <select id="delay" name="delay" class="delaybtn">
+      <option disabled>Select Delay</option>
+      <option value="1">1x</option>
+      <option value="2">2x</option>
+      <option value="3">3x</option>
+    </select>
+    <div id="fuel" class="shfuel">Fuel : </div>
+    <div id="time" class="shtime">Time : </div>
+    <div id="path" class="shpath">Path : </div>
+    <h1 class="head">Star map</h1>
+    <h3 class="step">Step &nbsp; : &nbsp; Press random map &nbsp; > &nbsp; Select search &nbsp; > &nbsp; Start</h3>
+    <div id="MapObj" width="50%" height="100%">   </div>
+  <section class="wrapper">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div id="title">
+    </div>
+    
+    </section>
+</body>
+</html>
+
