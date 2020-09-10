@@ -739,8 +739,8 @@ let map = [
   },
   {
     startPlanet: 0,
-    endPlanet: 14,
-    fuelLimit: 14,
+    endPlanet: 9,
+    fuelLimit: 10,
     mapNumber: 4,
     Planets: [
       {
