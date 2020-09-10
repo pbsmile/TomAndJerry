@@ -604,33 +604,39 @@ function reset(){
 
 function randommap() {
     var map = Math.floor(Math.random() * 5) + 1;
-    var x = ""
-    var mapHtml = ""
+    var x = "";
+    window.mapHtml = "";
+    window.mapEle = "";
     
     if(map == 1){
         thisMap = mapstruct[0];
-        x = "Map Pakbung"
-        mapHtml = "map1.html"
+        x = "Map Pakbung";
+        mapHtml = "map1.html";
+        mapEle = "m1";
     }
     if(map == 2){
         thisMap = mapstruct[1];
-        x = "Map Nice"
-        mapHtml = "map2.html"
+        x = "Map Nice";
+        mapHtml = "map2.html";
+        mapEle = "m2";
     }
     if(map == 3){
         thisMap = mapstruct[2];
-        x = "Map Namob"
-        mapHtml = "map3.html"
+        x = "Map Namob";
+        mapHtml = "map3.html";
+        mapEle = "m3";
     }
     if(map == 4){
         thisMap = mapstruct[3];
-        x = "Map Aon"
-        mapHtml = "map4.html"
+        x = "Map Aon";
+        mapHtml = "map4.html";
+        mapEle = "m4";
     }
     if(map == 5){
         thisMap = mapstruct[4];
-        x = "Map Little"
-        mapHtml = "map5.html"
+        x = "Map Little";
+        mapHtml = "map5.html";
+        mapEle = "m5";
     }
     document.getElementById('map').textContent = x
     document.getElementById("MapObj").innerHTML = '<object data='+ mapHtml +'  width="100%" height="100%"></object>'
@@ -732,6 +738,20 @@ function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFue
 }
 
 function nodeVisited(currentNode){
+    var idCircle = mapEle+"-circle"+currentNode;
+    console.log(idCircle);
+    document.getElementById(idCircle).style.backgroundColor = "yellow";
+    /*$.get(mapHtml, null, function(){
+        $(idCircle).css('background-color', 'yellow');
+    });*/
+    return null;
+}
+
+function arrowPassed(){
+    return null;
+}
+
+function resetColor(){
     return null;
 }
 
