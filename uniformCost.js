@@ -49,6 +49,7 @@ let startPlanet=null;
 module.exports.unc = function uniformCost(map) {
     startPlanet = map.startPlanet;
     goalPlanet = map.endPlanet;
+    console.log(map.endPlanet)
     const fuelLimit = map.fuelLimit;
     for (let i = 0; i < map.Planets.length; i++) {
         mapPlanets.set(i, map.Planets[i].linkedPlanets);
