@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',init);
+document.addEventListener('DOMContentLoaded',initial);
 
 
 /*------------------------- map is here -------------------------*/
@@ -576,14 +576,7 @@ let mapstruct = [
     },
 ];
 
-
-function init(){
-    randommap();
-    reset();
-}
-
-
-function reset(){
+function initial(){
     window.thisMap = mapstruct[0];
     window.delay = 3000;
     window.strFuel = "";
@@ -594,19 +587,36 @@ function reset(){
     window.pathEle = document.getElementById("path");
     window.searchEle = document.getElementById('search');
     window.delayEle = document.getElementById('delay');
-    
+    window.mapHtml = "";
+    window.mapEle = "";
+    window.bottomReached = false;
+    init();
+}
+
+function init(){
+    reset();
+    randommap();
+}
+
+
+function reset(){
+    bottomReached = false;
+    resetEle()
+    searchEle.selectedIndex = "1";
+    delayEle.selectedIndex = "1";
+}
+
+function resetEle()
+{
     fuelEle.innerHTML = "Fuel : ";
     timeEle.innerHTML = "Time : ";
     pathEle.innerHTML = "Path : ";
-    searchEle.selectedIndex = "1";
-    delayEle.selectedIndex = "1";
+    return null;
 }
 
 function randommap() {
     var map = Math.floor(Math.random() * 5) + 1;
     var x = "";
-    window.mapHtml = "";
-    window.mapEle = "";
     
     if(map == 1){
         thisMap = mapstruct[0];
@@ -662,7 +672,6 @@ function start()
 
 
 /*--------------- iterative deepening search is here --------------*/
-var bottomReached = false;
 
 function iterativeDeepeningSearch(mapUse){   
     var depth = 1;
@@ -693,6 +702,7 @@ function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFue
     if(currentFuel <= fuelLimit){
         console.log("Visiting Planet " + currentPlanet);
         nodeVisited(currentPlanet);
+        setString(currentFuel,time,currentPlanet);
         if (currentPlanet === goal) {
             // We have found the goal node we're searching for
             console.log("Tom has found Jerry!");
@@ -722,6 +732,7 @@ function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFue
                 return result;
             }
         }
+        resetEle();
     }
     else{
         console.log("Not enough fuel finding others way...");
@@ -740,11 +751,18 @@ function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFue
 function nodeVisited(currentNode){
     var idCircle = mapEle+"-circle"+currentNode;
     console.log(idCircle);
-    document.getElementById(idCircle).style.backgroundColor = "yellow";
+    //document.getElementById(idCircle).style.backgroundColor = "yellow";
     /*$.get(mapHtml, null, function(){
         $(idCircle).css('background-color', 'yellow');
     });*/
     return null;
+}
+
+function setString(currentFuel,time,currentPlanet){
+    fuelEle.innerHTML = 'Fuel : '+currentFuel;
+    timeEle.innerHTML = 'Time : '+ time;
+    if (currentPlanet > 0) pathEle.innerHTML += ' > '+currentPlanet;
+    else pathEle.innerHTML += currentPlanet;
 }
 
 function arrowPassed(){
