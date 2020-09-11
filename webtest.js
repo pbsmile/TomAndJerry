@@ -927,6 +927,7 @@ function initial(){
     window.mapHtml = "";
     window.bottomReached = false;
     window.showMap = "m1";
+    window.goal = 6;
     init();
 }
 
@@ -938,12 +939,13 @@ function init(){
 
 function reset(){
     bottomReached = false;
+    strPath = "";
     resetEle()
     searchEle.selectedIndex = "1";
     delayEle.selectedIndex = "1";
 }
 
-function resetEle(goal)
+function resetEle()
 {
     fuelEle.innerHTML = "Fuel : ";
     timeEle.innerHTML = "Time : ";
@@ -953,7 +955,7 @@ function resetEle(goal)
 
     for(var i=0;i<=goal;i++){
         var idCircle = showMap + "-circle" + i;
-        document.getElementById(idCircle).style.backgroundColor = "yellow";
+        document.getElementById(idCircle).style.backgroundColor = "white";
     }
     return null;
 }
@@ -992,6 +994,11 @@ function randommap() {
 }
 
 function start() {
+    if( bottomReached == true) 
+    {
+        alert("Please reset before start!");
+        return null;
+    }
     var strSearch = searchEle.options[searchEle.selectedIndex].value;
     var strDelay = delayEle.options[delayEle.selectedIndex].value;
     if (strDelay == '1') delay = 3000;
@@ -1003,17 +1010,14 @@ function start() {
         iterativeDeepeningSearch(thisMap);
         executionTime = Date.now() - start;
     } else if (strSearch == 'uniform') {
-        unc(thisMap);
+        uniformCost(thisMap);
         executionTime = Date.now() - start;
     }
     setTimeCPU(executionTime,navigator.hardwareConcurrency);
 }
 
 function nodeVisited(currentNode) {
-    var idCircle = showMap + "-circle" + currentNode;
-    setTimeout(()=>{
-    document.getElementById(idCircle).style.backgroundColor = "yellow";
-    },delay);
+
     /*$.get(mapHtml, null, function(){
         $(idCircle).css('background-color', 'yellow');
     });*/
@@ -1021,13 +1025,15 @@ function nodeVisited(currentNode) {
 }
 
 function setTimeCPU(executionTime,cpuUsage){
-    exctimeEle.innerHTML += executionTime;
+    exctimeEle.innerHTML += executionTime + ' milliseconds';
     cpuEle.innerHTML += cpuUsage;
+    nodeVisited();
 }
 
 function setString(currentFuel,time,currentPlanet){
     fuelEle.innerHTML = 'Fuel : '+currentFuel;
     timeEle.innerHTML = 'Time : '+ time;
+    strPath += currentPlanet;
     if (currentPlanet > 0) pathEle.innerHTML += ' > '+currentPlanet;
     else pathEle.innerHTML += currentPlanet;
 }
@@ -1047,7 +1053,7 @@ function resetColor() {
 function iterativeDeepeningSearch(mapUse) {
     var depth = 1;
     const start = mapUse.startPlanet;
-    const goal = mapUse.endPlanet;
+    goal = mapUse.endPlanet;
     const fuelLimit = mapUse.fuelLimit;
     const planets = mapUse.Planets;
     var currentFuel = 0;
@@ -1058,6 +1064,7 @@ function iterativeDeepeningSearch(mapUse) {
         bottomReached = true;
         var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
         if (result != null) {
+            console.log(strPath);
             return result;
         }
         depth += 1;
@@ -1071,7 +1078,7 @@ function iterativeDeepeningSearch(mapUse) {
 function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time) {
     if (currentFuel <= fuelLimit) {
         console.log("Visiting Planet " + currentPlanet);
-        nodeVisited(currentPlanet);
+        //-----nodeVisited(currentPlanet);
         setString(currentFuel,time,currentPlanet);
         if (currentPlanet === goal) {
             // We have found the goal node we're searching for
@@ -1102,7 +1109,7 @@ function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFue
                 return result;
             }
         }
-        resetEle(goal);
+        //---resetEle(goal);
     }
     else{
         console.log("Not enough fuel finding others way...");
