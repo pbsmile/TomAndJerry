@@ -1,6 +1,6 @@
 var bottomReached = false;
 
-function iterativeDeepeningSearch(map){   
+module.exports.ids = function iterativeDeepeningSearch(map){   
     var depth = 1;
     const start = map.startPlanet;
     const goal = map.endPlanet;
