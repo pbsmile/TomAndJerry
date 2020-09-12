@@ -306,7 +306,7 @@ body {
     transform: rotate(140deg);
 }
 
-#m5-arrow-0-1::before {
+#m5-arrow-0-1 {
     width: 210px;
     height: 5px;
     background: black;
@@ -330,15 +330,15 @@ body {
     transform: rotate(40deg);
 }
 
-#m5-arrow-0-2::before {
+#m5-arrow-0-2 {
     width: 210px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -60px;
-    margin-left: -70px;
+    margin-top: 50px;
+    margin-left: -50px;
     transform: rotate(40deg);
 }
 
@@ -354,7 +354,7 @@ body {
     transform: rotate(90deg);
 }
 
-#m5-arrow-0-4::before {
+#m5-arrow-0-4 {
     width: 250px;
     height: 5px;
     background: black;
@@ -378,7 +378,7 @@ body {
     transform: rotate(140deg);
 }
 
-#m5-arrow-2-4::before {
+#m5-arrow-2-4 {
     width: 210px;
     height: 5px;
     background: black;
@@ -393,7 +393,7 @@ body {
 
 /*long arrow from 3 to 4*/
 
-#m5-arrow-4-3:after {
+#m5-arrow-3-4:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -402,7 +402,7 @@ body {
     transform: rotate(140deg);
 }
 
-#m5-arrow-4-3::before {
+#m5-arrow-3-4 {
     width: 210px;
     height: 5px;
     background: black;
@@ -426,7 +426,7 @@ body {
     transform: rotate(50deg);
 }
 
-#m5-arrow-3-6::before {
+#m5-arrow-3-6 {
     width: 210px;
     height: 5px;
     background: black;
@@ -450,7 +450,7 @@ body {
     transform: rotate(70deg);
 }
 
-#m5-arrow-2-5::before {
+#m5-arrow-2-5 {
     width: 280px;
     height: 5px;
     background: black;
@@ -474,7 +474,7 @@ body {
     transform: rotate(120deg);
 }
 
-#m5-arrow-6-8::before {
+#m5-arrow-6-8 {
     width: 200px;
     height: 5px;
     background: black;
@@ -498,14 +498,14 @@ body {
     transform: rotate(70deg);
 }
 
-#m5-arrow-6-9::before {
+#m5-arrow-6-9 {
     width: 180px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -130px;
+    margin-top: 50px;
     margin-left: -10px;
     transform: rotate(70deg);
 }
@@ -522,14 +522,14 @@ body {
     transform: rotate(60deg);
 }
 
-#m5-arrow-4-7::before {
+#m5-arrow-4-7 {
     width: 380px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -900px;
+    margin-top: -400px;
     margin-left: -50px;
     transform: rotate(60deg);
 }
@@ -546,7 +546,7 @@ body {
     transform: rotate(120deg);
 }
 
-#m5-arrow-7-9::before {
+#m5-arrow-7-9 {
     width: 200px;
     height: 5px;
     background: black;
