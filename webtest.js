@@ -1044,6 +1044,7 @@ function nodeVisited() {
         {
           var thisShow = show[i/2];
           console.log('thisShow : '+ thisShow + '     show[i] : ' + show[i/2]);
+          var idArrow = showMap + "-arrow-0" ;
           for (var c = 0; c < thisShow.length; c++){
             if(c == 0){
               strPath += c;
@@ -1054,7 +1055,10 @@ function nodeVisited() {
             {
               strPath += ' -> ' + thisShow[c+2];
               var idCircle = showMap + "-circle" + thisShow[c+2];
+              idArrow += '-' + thisShow[c+2];
               document.getElementById(idCircle).style.backgroundColor = "blue";
+              document.getElementById(idArrow).style.backgroundColor = "yellow";
+              idArrow = showMap + "-arrow-" + thisShow[c+2];
               time += parseInt(thisShow[c+4]);
               currentFuel += parseInt(thisShow[c+6]);
               c += 6;
