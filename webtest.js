@@ -944,8 +944,8 @@ function init(){
 
 function reset(){
     bottomReached = false;
-    strPath = "";
     resetEle()
+    strPath = "";
     exctimeEle.innerHTML = "Execute time : ";
     searchEle.selectedIndex = "1";
     delayEle.selectedIndex = "1";
@@ -962,13 +962,30 @@ function resetEle()
     timeEle.innerHTML = "Traveled Time (Cost) : ";
     pathEle.innerHTML = "Path : ";
     
-    strPath = "";
     resetDelay = 500;
 
     for(var i=0;i<=goal;i++){
         var idCircle = showMap + "-circle" + i;
-        document.getElementById(idCircle).style.backgroundColor = "white";
+        document.getElementById(idCircle).style.backgroundColor = "white";      
     }
+    for(var i=0;i<strPath.length;i++){
+      var idArrow = showMap + '-arrow-';
+      if(strPath[i]=='>')
+      {
+        var firstPlanet = strPath[i-3];
+        console.log('Reset firstPlanet' +firstPlanet);
+        if(strPath[i+2]<firstPlanet){
+          idArrow+=strPath[i+2]+'-'+firstPlanet;
+        }
+        else idArrow+=firstPlanet+'-'+strPath[i+2];
+        
+        console.log('reset Arrow ID : '+idArrow);
+        var arrow = document.getElementById(idArrow);
+        if (arrow != null) arrow.style.background = "black";
+      }
+    }
+
+    strPath = "";
     return null;
 }
 
@@ -1043,8 +1060,6 @@ function nodeVisited() {
         if(i%2==0)
         {
           var thisShow = show[i/2];
-          console.log('thisShow : '+ thisShow + '     show[i] : ' + show[i/2]);
-          var idArrow = showMap + "-arrow-0" ;
           for (var c = 0; c < thisShow.length; c++){
             if(c == 0){
               strPath += c;
@@ -1053,12 +1068,21 @@ function nodeVisited() {
             }
             else if(thisShow[c] == '>')
             {
+              if(c!=4) var firstPlanet = strPath.charAt(strPath.length-1);
+              else var firstPlanet = '0';
+              console.log('firstPlanet : '+firstPlanet);
               strPath += ' -> ' + thisShow[c+2];
               var idCircle = showMap + "-circle" + thisShow[c+2];
-              idArrow += '-' + thisShow[c+2];
               document.getElementById(idCircle).style.backgroundColor = "blue";
-              document.getElementById(idArrow).style.backgroundColor = "yellow";
-              idArrow = showMap + "-arrow-" + thisShow[c+2];
+              //----------Arrow interface here------------
+              var idArrow = showMap + "-arrow-";
+              if(thisShow[c+2]<firstPlanet){
+                idArrow+=thisShow[c+2]+'-'+firstPlanet;
+              }
+              else idArrow+=firstPlanet+'-'+thisShow[c+2];
+              console.log(idArrow);
+              var arrow = document.getElementById(idArrow);
+              if(arrow != null) arrow.style.backgroundColor="yellow";
               time += parseInt(thisShow[c+4]);
               currentFuel += parseInt(thisShow[c+6]);
               c += 6;
@@ -1076,6 +1100,7 @@ function nodeVisited() {
         if (i < show.length*2-1) {
             myLoop(); //  ..  again which will trigger another 
         } //  ..  setTimeout()
+
     }, resetDelay)
   }
 
@@ -1095,10 +1120,6 @@ function setString(currentFuel,time){
     fuelEle.innerHTML = 'Used Fuel : '+ currentFuel;
     timeEle.innerHTML = 'Traveled Time (Cost) : '+ time;
     pathEle.innerHTML = 'Path : '+ strPath;
-    return null;
-}
-
-function arrowPassed(){
     return null;
 }
 
