@@ -3,931 +3,936 @@ document.addEventListener('DOMContentLoaded',initial);
 
 /*------------------------- map is here -------------------------*/
 let mapstruct = [
-    {
-      startPlanet: 0,
-      endPlanet: 6,
-      fuelLimit: 12,
-      mapNumber: 0,
-      Planets: [
-        {
-          time: 0,
-          planetNumber: 0,
-          linkedPlanets: [
+  {
+    startPlanet: 0,
+    endPlanet: 6,
+    fuelLimit: 12,
+    mapNumber: 0,
+    Planets: [
+      {
+        time: 0,
+        planetNumber: 0,
+        linkedPlanets: [
+          {
+            planetNumber: 1,
+            time: 4,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 1,
+            useFuel: 4,
+          },
+        ],
+      },
+      {
+        time: 4,
+        planetNumber: 1,
+        linkedPlanets: [
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 1,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 2,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 0,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 5,
+            time: 3,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 1,
+            time: 4,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 3,
+        linkedPlanets: [
+          {
+            planetNumber: 5,
+            time: 3,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 1,
+            time: 4,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 4,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 4,
+          },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 5,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 0,
+            useFuel: 6,
+          },
+          {
+            planetNumber: 3,
+            time: 1,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 6,
+        linkedPlanets: [
+          {
+            planetNumber: 5,
+            time: 3,
+            useFuel: 6,
+          },
+          {
+            planetNumber: 4,
+            time: 0,
+            useFuel: 2,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    startPlanet: 0,
+    endPlanet: 6,
+    fuelLimit: 7,
+    mapNumber: 1,
+    Planets: [
+      {
+        time: 0,
+        planetNumber: 0,
+        linkedPlanets: [
+          {
+            planetNumber: 1,
+            useFuel: 2,
+            time: 4,
+          },
+          {
+            planetNumber: 5,
+            time: 0,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 1,
+        linkedPlanets: [
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 3,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 1,
+            time: 0,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 2,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 1,
+            time: 2,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 3,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 5,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 6,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 1,
+            time: 2,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 4,
+        linkedPlanets: [
+          {
+            planetNumber: 5,
+            time: 0,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 3,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 5,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 0,
+            useFuel: 8,
+          },
+          {
+            planetNumber: 3,
+            time: 3,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 4,
+            time: 2,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 6,
+        linkedPlanets: [
             {
-              planetNumber: 1,
-              time: 4,
-              useFuel: 1,
+                planetNumber: 3,
+                time: 3,
+                useFuel: 2,
             },
             {
-              planetNumber: 3,
-              time: 1,
-              useFuel: 4,
-            },
-          ],
-        },
-        {
-          time: 4,
-          planetNumber: 1,
-          linkedPlanets: [
+                planetNumber: 5,
+                time: 0,
+                useFuel: 8,
+              },
+        ],
+      },
+    ],
+  },
+  {
+    startPlanet: 0,
+    endPlanet: 6,
+    fuelLimit: 9,
+    mapNumber: 2,
+    Planets: [
+      {
+        time: 0,
+        planetNumber: 0,
+        linkedPlanets: [
+          {
+            planetNumber: 1,
+            time: 1,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 1,
+        linkedPlanets: [
+          {
+            planetNumber: 3,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 4,
+            time: 3,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 4,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 2,
+        linkedPlanets: [
+          {
+            planetNumber: 5,
+            time: 2,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 6,
+            time: 4,
+            useFuel: 8,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 3,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 3,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 5,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 1,
+            time: 1,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 4,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 4,
+            useFuel: 5,
+          },
+          {
+            planetNumber: 1,
+            time: 1,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 2,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 5,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 4,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 2,
+            time: 2,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 3,
+            time: 2,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 4,
+        planetNumber: 6,
+        linkedPlanets: [
             {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 3,
-              time: 1,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 2,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 0,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 5,
-              time: 3,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 1,
-              time: 4,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 3,
-          linkedPlanets: [
-            {
-              planetNumber: 5,
-              time: 3,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 1,
-              time: 4,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 4,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 4,
-            },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 5,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 0,
-              useFuel: 6,
-            },
-            {
-              planetNumber: 3,
-              time: 1,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 6,
-          linkedPlanets: [
-            {
-              planetNumber: 5,
-              time: 3,
-              useFuel: 6,
-            },
-            {
-              planetNumber: 4,
-              time: 0,
-              useFuel: 2,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      startPlanet: 0,
-      endPlanet: 6,
-      fuelLimit: 7,
-      mapNumber: 1,
-      Planets: [
-        {
-          time: 0,
-          planetNumber: 0,
-          linkedPlanets: [
-            {
-              planetNumber: 1,
-              useFuel: 2,
-              time: 4,
-            },
-            {
-              planetNumber: 5,
-              time: 0,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 1,
-          linkedPlanets: [
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 3,
-              time: 3,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 1,
-              time: 0,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 2,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 1,
-              time: 2,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 3,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 5,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 6,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 1,
-              time: 2,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 4,
-          linkedPlanets: [
-            {
-              planetNumber: 5,
-              time: 0,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 3,
-              time: 3,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 5,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 0,
-              useFuel: 8,
-            },
-            {
-              planetNumber: 3,
-              time: 3,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 4,
-              time: 2,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 6,
-          linkedPlanets: [
-              {
-                  planetNumber: 3,
-                  time: 3,
-                  useFuel: 2,
+                planetNumber: 2,
+                time: 2,
+                useFuel: 8,
               },
               {
-                  planetNumber: 5,
-                  time: 0,
-                  useFuel: 8,
-                },
-          ],
-        },
-      ],
-    },
-    {
-      startPlanet: 0,
-      endPlanet: 6,
-      fuelLimit: 9,
-      mapNumber: 2,
-      Planets: [
-        {
-          time: 0,
-          planetNumber: 0,
-          linkedPlanets: [
-            {
-              planetNumber: 1,
-              time: 1,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 1,
-          linkedPlanets: [
-            {
-              planetNumber: 3,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 4,
-              time: 3,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 4,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 2,
-          linkedPlanets: [
-            {
-              planetNumber: 5,
-              time: 2,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 6,
-              time: 4,
-              useFuel: 8,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 3,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 3,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 5,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 1,
-              time: 1,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 4,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 4,
-              useFuel: 5,
-            },
-            {
-              planetNumber: 1,
-              time: 1,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 3,
-              time: 2,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 5,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 4,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 2,
-              time: 2,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 3,
-              time: 2,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 4,
-          planetNumber: 6,
-          linkedPlanets: [
+                planetNumber: 4,
+                time: 3,
+                useFuel: 5,
+              },
               {
-                  planetNumber: 2,
-                  time: 2,
-                  useFuel: 8,
-                },
-                {
-                  planetNumber: 4,
-                  time: 3,
-                  useFuel: 5,
-                },
-                {
-                  planetNumber: 5,
-                  time: 2,
-                  useFuel: 2,
-                },
-          ],
-        },
-      ],
-    },
-    {
-      startPlanet: 0,
-      endPlanet: 14,
-      fuelLimit: 14,
-      mapNumber: 3,
-      Planets: [
-        {
-          time: 0,
-          planetNumber: 0,
-          linkedPlanets: [
+                planetNumber: 5,
+                time: 2,
+                useFuel: 2,
+              },
+        ],
+      },
+    ],
+  },
+  {
+    startPlanet: 0,
+    endPlanet: 14,
+    fuelLimit: 14,
+    mapNumber: 3,
+    Planets: [
+      {
+        time: 0,
+        planetNumber: 0,
+        linkedPlanets: [
+          {
+            planetNumber: 1,
+            time: 1,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 2,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 3,
+            time: 3,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 1,
+        linkedPlanets: [
+          {
+            planetNumber: 10,
+            time: 0,
+            useFuel: 6,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 2,
+        linkedPlanets: [
+          {
+            planetNumber: 6,
+            time: 2,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 3,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 5,
+            time: 4,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 4,
+        linkedPlanets: [
             {
-              planetNumber: 1,
-              time: 1,
-              useFuel: 3,
-            },
+                planetNumber: 3,
+                time: 3,
+                useFuel: 1,
+              },
+        ],
+      },
+      {
+        time: 4,
+        planetNumber: 5,
+        linkedPlanets: [
+          {
+            planetNumber: 7,
+            time: 2,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 6,
+            time: 2,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 3,
+            time: 3,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 6,
+        linkedPlanets: [
+          {
+            planetNumber: 8,
+            time: 1,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 10,
+            time: 0,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 2,
+            time: 0,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 5,
+            time: 4,
+            useFuel: 4,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 7,
+        linkedPlanets: [
+          {
+            planetNumber: 8,
+            time: 1,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 5,
+            time: 4,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 8,
+        linkedPlanets: [
+          {
+            planetNumber: 9,
+            time: 0,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 12,
+            time: 3,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 6,
+            time: 2,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 7,
+            time: 2,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 9,
+        linkedPlanets: [
+          {
+            planetNumber: 11,
+            time: 1,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 8,
+            time: 1,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 10,
+        linkedPlanets: [
+          {
+            planetNumber: 12,
+            time: 3,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 6,
+            time: 2,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 1,
+            time: 1,
+            useFuel: 6,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 11,
+        linkedPlanets: [
+          {
+            planetNumber: 12,
+            time: 3,
+            useFuel: 5,
+          },
+          {
+            planetNumber: 14,
+            time: 0,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 9,
+            time: 0,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 12,
+        linkedPlanets: [
+          {
+            planetNumber: 13,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 8,
+            time: 1,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 10,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 11,
+            time: 1,
+            useFuel: 5,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 13,
+        linkedPlanets: [
+          {
+            planetNumber: 14,
+            time: 0,
+            useFuel: 2,
+          },
+          {
+            planetNumber: 12,
+            time: 3,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 14,
+        linkedPlanets: [
             {
-              planetNumber: 2,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 3,
-              time: 3,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 1,
-          linkedPlanets: [
-            {
-              planetNumber: 10,
-              time: 0,
-              useFuel: 6,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 2,
-          linkedPlanets: [
-            {
-              planetNumber: 6,
-              time: 2,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 3,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 5,
-              time: 4,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 4,
-          linkedPlanets: [
+                planetNumber: 13,
+                time: 2,
+                useFuel: 2,
+              },
               {
-                  planetNumber: 3,
-                  time: 3,
-                  useFuel: 1,
-                },
-          ],
-        },
-        {
-          time: 4,
-          planetNumber: 5,
-          linkedPlanets: [
+                planetNumber: 11,
+                time: 1,
+                useFuel: 3,
+              },
+        ],
+      },
+    ],
+  },
+  {
+    startPlanet: 0,
+    endPlanet: 9,
+    fuelLimit: 10,
+    mapNumber: 4,
+    Planets: [
+      {
+        time: 0,
+        planetNumber: 0,
+        linkedPlanets: [
+          {
+            planetNumber: 1,
+            time: 2,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 2,
+            time: 3,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 4,
+            time: 1,
+            useFuel: 3,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 1,
+        linkedPlanets: [
             {
-              planetNumber: 7,
-              time: 2,
-              useFuel: 2,
-            },
+                planetNumber: 0,
+                time: 0,
+                useFuel: 1,
+              },
+        ],
+      },
+      {
+        time: 3,
+        planetNumber: 2,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 1,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 5,
+            time: 4,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 3,
+        linkedPlanets: [
+          {
+            planetNumber: 4,
+            time: 1,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 6,
+            time: 5,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 1,
+        planetNumber: 4,
+        linkedPlanets: [
+          {
+            planetNumber: 7,
+            time: 2,
+            useFuel: 5,
+          },
+          {
+            planetNumber: 0,
+            time: 0,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 2,
+            time: 3,
+            useFuel: 1,
+          },
+          {
+            planetNumber: 3,
+            time: 1,
+            useFuel: 1,
+          },
+        ],
+      },
+      {
+        time: 4,
+        planetNumber: 5,
+        linkedPlanets: [
             {
-              planetNumber: 6,
-              time: 2,
-              useFuel: 4,
-            },
+                planetNumber: 2,
+                time: 3,
+                useFuel: 1,
+              },
+        ],
+      },
+      {
+        time: 5,
+        planetNumber: 6,
+        linkedPlanets: [
+          {
+            planetNumber: 8,
+            time: 2,
+            useFuel: 4,
+          },
+          {
+            planetNumber: 9,
+            time: 0,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 3,
+            time: 1,
+            useFuel: 2,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 7,
+        linkedPlanets: [
+          {
+            planetNumber: 9,
+            time: 0,
+            useFuel: 3,
+          },
+          {
+            planetNumber: 4,
+            time: 1,
+            useFuel: 5,
+          },
+        ],
+      },
+      {
+        time: 2,
+        planetNumber: 8,
+        linkedPlanets: [
             {
-              planetNumber: 3,
-              time: 3,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 6,
-          linkedPlanets: [
+                planetNumber: 6,
+                time: 5,
+                useFuel: 4,
+              },
+        ],
+      },
+      {
+        time: 0,
+        planetNumber: 9,
+        linkedPlanets: [
             {
-              planetNumber: 8,
-              time: 1,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 10,
-              time: 0,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 2,
-              time: 0,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 5,
-              time: 4,
-              useFuel: 4,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 7,
-          linkedPlanets: [
-            {
-              planetNumber: 8,
-              time: 1,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 5,
-              time: 4,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 8,
-          linkedPlanets: [
-            {
-              planetNumber: 9,
-              time: 0,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 12,
-              time: 3,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 6,
-              time: 2,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 7,
-              time: 2,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 9,
-          linkedPlanets: [
-            {
-              planetNumber: 11,
-              time: 1,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 8,
-              time: 1,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 10,
-          linkedPlanets: [
-            {
-              planetNumber: 12,
-              time: 3,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 6,
-              time: 2,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 1,
-              time: 1,
-              useFuel: 6,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 11,
-          linkedPlanets: [
-            {
-              planetNumber: 12,
-              time: 3,
-              useFuel: 5,
-            },
-            {
-              planetNumber: 14,
-              time: 0,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 9,
-              time: 0,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 12,
-          linkedPlanets: [
-            {
-              planetNumber: 13,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 8,
-              time: 1,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 10,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 11,
-              time: 1,
-              useFuel: 5,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 13,
-          linkedPlanets: [
-            {
-              planetNumber: 14,
-              time: 0,
-              useFuel: 2,
-            },
-            {
-              planetNumber: 12,
-              time: 3,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 14,
-          linkedPlanets: [
+                planetNumber: 6,
+                time: 5,
+                useFuel: 3,
+              },
               {
-                  planetNumber: 13,
-                  time: 2,
-                  useFuel: 2,
-                },
-                {
-                  planetNumber: 11,
-                  time: 1,
-                  useFuel: 3,
-                },
-          ],
-        },
-      ],
-    },
-    {
-      startPlanet: 0,
-      endPlanet: 9,
-      fuelLimit: 10,
-      mapNumber: 4,
-      Planets: [
-        {
-          time: 0,
-          planetNumber: 0,
-          linkedPlanets: [
-            {
-              planetNumber: 1,
-              time: 2,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 2,
-              time: 3,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 4,
-              time: 1,
-              useFuel: 3,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 1,
-          linkedPlanets: [
-              {
-                  planetNumber: 0,
-                  time: 0,
-                  useFuel: 1,
-                },
-          ],
-        },
-        {
-          time: 3,
-          planetNumber: 2,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 1,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 5,
-              time: 4,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 3,
-          linkedPlanets: [
-            {
-              planetNumber: 4,
-              time: 1,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 6,
-              time: 5,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 1,
-          planetNumber: 4,
-          linkedPlanets: [
-            {
-              planetNumber: 7,
-              time: 2,
-              useFuel: 5,
-            },
-            {
-              planetNumber: 0,
-              time: 0,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 2,
-              time: 3,
-              useFuel: 1,
-            },
-            {
-              planetNumber: 3,
-              time: 1,
-              useFuel: 1,
-            },
-          ],
-        },
-        {
-          time: 4,
-          planetNumber: 5,
-          linkedPlanets: [
-              {
-                  planetNumber: 2,
-                  time: 3,
-                  useFuel: 1,
-                },
-          ],
-        },
-        {
-          time: 5,
-          planetNumber: 6,
-          linkedPlanets: [
-            {
-              planetNumber: 8,
-              time: 2,
-              useFuel: 4,
-            },
-            {
-              planetNumber: 9,
-              time: 0,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 3,
-              time: 1,
-              useFuel: 2,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 7,
-          linkedPlanets: [
-            {
-              planetNumber: 9,
-              time: 0,
-              useFuel: 3,
-            },
-            {
-              planetNumber: 4,
-              time: 1,
-              useFuel: 5,
-            },
-          ],
-        },
-        {
-          time: 2,
-          planetNumber: 8,
-          linkedPlanets: [
-              {
-                  planetNumber: 6,
-                  time: 5,
-                  useFuel: 4,
-                },
-          ],
-        },
-        {
-          time: 0,
-          planetNumber: 9,
-          linkedPlanets: [
-              {
-                  planetNumber: 6,
-                  time: 5,
-                  useFuel: 3,
-                },
-                {
-                  planetNumber: 7,
-                  time: 2,
-                  useFuel: 3,
-                },
-          ],
-        },
-      ],
-    },
-  ];
+                planetNumber: 7,
+                time: 2,
+                useFuel: 3,
+              },
+        ],
+      },
+    ],
+  },
+];
 
 function initial(){
     window.thisMap = mapstruct[0];
     window.delay = 3000;
+    window.resetDelay = 500;
     window.strFuel = "";
     window.strTime = "";
     window.strPath = "";
+    window.show = [];
     window.fuelEle = document.getElementById("fuel");
     window.timeEle = document.getElementById("time");
     window.pathEle = document.getElementById("path");
     window.searchEle = document.getElementById('search');
     window.delayEle = document.getElementById('delay');
     window.exctimeEle = document.getElementById('exctime');
-    window.cpuEle = document.getElementById('resource');
     window.mapHtml = "";
     window.bottomReached = false;
     window.showMap = "m1";
     window.goal = 6;
+    window.mapPlanets = new Map();
+    window.goalPlanet=null;
+    window.startPlanet=null;
+
     init();
 }
 
@@ -941,17 +946,24 @@ function reset(){
     bottomReached = false;
     strPath = "";
     resetEle()
+    exctimeEle.innerHTML = "Execute time : ";
     searchEle.selectedIndex = "1";
     delayEle.selectedIndex = "1";
+    show = [];
+    
+    mapPlanets = new Map();
+    goalPlanet=null;
+    startPlanet=null;
 }
 
 function resetEle()
 {
-    fuelEle.innerHTML = "Fuel : ";
-    timeEle.innerHTML = "Time : ";
+    fuelEle.innerHTML = "Used Fuel : ";
+    timeEle.innerHTML = "Traveled Time (Cost) : ";
     pathEle.innerHTML = "Path : ";
-    exctimeEle.innerHTML = "Execute time : ";
-    cpuEle.innerHTML = "Computer usage : ";
+    
+    strPath = "";
+    resetDelay = 500;
 
     for(var i=0;i<=goal;i++){
         var idCircle = showMap + "-circle" + i;
@@ -999,50 +1011,90 @@ function start() {
         alert("Please reset before start!");
         return null;
     }
+
+    if( goalPlanet != null){
+        alert("Please reset before start!");
+        return null;
+    } 
     var strSearch = searchEle.options[searchEle.selectedIndex].value;
     var strDelay = delayEle.options[delayEle.selectedIndex].value;
-    if (strDelay == '1') delay = 3000;
-    else if (strDelay == '2') delay = 1500;
-    else if (strDelay == '3') delay = 1000;
+    if (strDelay == '1') delay = 6000;
+    else if (strDelay == '2') delay = 3000;
+    else if (strDelay == '3') delay = 2000;
     var start = Date.now();
     var executionTime = Date.now();
     if (strSearch == 'iterative') {
-        iterativeDeepeningSearch(thisMap);
+        //iterativeDeepeningSearch(thisMap);
         executionTime = Date.now() - start;
     } else if (strSearch == 'uniform') {
         uniformCost(thisMap);
         executionTime = Date.now() - start;
+        nodeVisited();
     }
-    setTimeCPU(executionTime,navigator.hardwareConcurrency);
+    setTimeCPU(executionTime);
 }
 
-function nodeVisited(currentNode) {
+function nodeVisited() {
+  var i = 0;
+  var currentFuel = 0;
+  var time = 0;
+  function myLoop() { //  create a loop function
+    setTimeout(function() {
+        if(i%2==0)
+        {
+          var thisShow = show[i/2];
+          console.log('thisShow : '+ thisShow + '     show[i] : ' + show[i/2]);
+          for (var c = 0; c < thisShow.length; c++){
+            if(c == 0){
+              strPath += c;
+              var idCircle = showMap + "-circle" + c;
+              document.getElementById(idCircle).style.backgroundColor = "blue";
+            }
+            else if(thisShow[c] == '>')
+            {
+              strPath += ' -> ' + thisShow[c+2];
+              var idCircle = showMap + "-circle" + thisShow[c+2];
+              document.getElementById(idCircle).style.backgroundColor = "blue";
+              time += parseInt(thisShow[c+4]);
+              currentFuel += parseInt(thisShow[c+6]);
+              c += 6;
+            }
+          }
+          resetDelay = delay;
+          setString(currentFuel,time);
+        }
+        else{
+          resetEle();
+          time = 0;
+          currentFuel= 0;
+        }
+        i++; //  increment the counter
+        if (i < show.length*2-1) {
+            myLoop(); //  ..  again which will trigger another 
+        } //  ..  setTimeout()
+    }, resetDelay)
+  }
 
+  myLoop();
     /*$.get(mapHtml, null, function(){
         $(idCircle).css('background-color', 'yellow');
     });*/
-    return null;
+
+  return null;
 }
 
-function setTimeCPU(executionTime,cpuUsage){
+function setTimeCPU(executionTime){
     exctimeEle.innerHTML += executionTime + ' milliseconds';
-    cpuEle.innerHTML += cpuUsage;
-    nodeVisited();
 }
 
-function setString(currentFuel,time,currentPlanet){
-    fuelEle.innerHTML = 'Fuel : '+currentFuel;
-    timeEle.innerHTML = 'Time : '+ time;
-    strPath += currentPlanet;
-    if (currentPlanet > 0) pathEle.innerHTML += ' > '+currentPlanet;
-    else pathEle.innerHTML += currentPlanet;
+function setString(currentFuel,time){
+    fuelEle.innerHTML = 'Used Fuel : '+ currentFuel;
+    timeEle.innerHTML = 'Traveled Time (Cost) : '+ time;
+    pathEle.innerHTML = 'Path : '+ strPath;
+    return null;
 }
 
 function arrowPassed(){
-    return null;
-}
-
-function resetColor() {
     return null;
 }
 
@@ -1175,10 +1227,6 @@ class searchNode {
     }
 }
 
-let mapPlanets = new Map();
-let goalPlanet=null;
-let startPlanet=null;
-
 function uniformCost(mapUse) {
     startPlanet = mapUse.startPlanet;
     goalPlanet = mapUse.endPlanet;
@@ -1273,6 +1321,7 @@ function uniformCost(mapUse) {
                 newChildStates.push(newS);
                 priorityQueue.enqueue(newN);
                 console.log("Path: ", newN.path());
+                show.push(newN.path());
                 console.log("Current priorityQueue: " + priorityQueue.map(function(planet){
                         return planet.state;
                     }));
@@ -1283,6 +1332,7 @@ function uniformCost(mapUse) {
     if (shortestPath.pathCost === null) {
         console.log("Couldn't find path.") 
     } else {
+        show.push(shortestPath.path);
         console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel );
     }
 }  
@@ -1300,18 +1350,3 @@ function successor(state, action) {
     return action.planetNumber;
 }
 
-
-
-
-
-/*function sleep(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time, i){
-    setTimeout(() => {
-        currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
-        time += planets[currentPlanet].time;
-        console.log("this planet time: "+planets[currentPlanet].time);
-        console.log("Current Fuel usage: "+currentFuel+", Time: "+time);
-        var result = deepeningSearch(currentPlanet, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
-        return result;
-      }, delay);
-    
-}*/
