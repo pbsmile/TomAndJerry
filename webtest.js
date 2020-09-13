@@ -918,7 +918,9 @@ function initial(){
     window.strFuel = "";
     window.strTime = "";
     window.strPath = "";
+    window.strPath1 = "";
     window.show = [];
+    window.show1 = [];
     window.fuelEle = document.getElementById("fuel");
     window.timeEle = document.getElementById("time");
     window.pathEle = document.getElementById("path");
@@ -944,32 +946,19 @@ function init(){
 
 function reset(){
     bottomReached = false;
+    resetEle();
+    resetElebi();
     strPath = "";
-    resetEle()
+    strPath1 = "";
     exctimeEle.innerHTML = "Execute time : ";
     searchEle.selectedIndex = "1";
     delayEle.selectedIndex = "1";
     show = [];
+    show1 = [];
     
     mapPlanets = new Map();
     goalPlanet=null;
     startPlanet=null;
-}
-
-function resetEle()
-{
-    fuelEle.innerHTML = "Used Fuel : ";
-    timeEle.innerHTML = "Traveled Time (Cost) : ";
-    pathEle.innerHTML = "Path : ";
-    
-    strPath = "";
-    resetDelay = 500;
-
-    for(var i=0;i<=goal;i++){
-        var idCircle = showMap + "-circle" + i;
-        document.getElementById(idCircle).style.backgroundColor = "white";
-    }
-    return null;
 }
 
 function randommap() {
@@ -1018,20 +1007,28 @@ function start() {
     } 
     var strSearch = searchEle.options[searchEle.selectedIndex].value;
     var strDelay = delayEle.options[delayEle.selectedIndex].value;
-    if (strDelay == '1') delay = 6000;
-    else if (strDelay == '2') delay = 3000;
-    else if (strDelay == '3') delay = 2000;
+    if (strDelay == '1') delay = 3000;
+    else if (strDelay == '2') delay = 2000;
+    else if (strDelay == '3') delay = 1000;
     var start = Date.now();
     var executionTime = Date.now();
     if (strSearch == 'iterative') {
-        //iterativeDeepeningSearch(thisMap);
+        iterativeDeepeningSearch(thisMap);
         executionTime = Date.now() - start;
+        console.log(show1);
+        console.log(show);
     } else if (strSearch == 'uniform') {
         uniformCost(thisMap);
         executionTime = Date.now() - start;
         nodeVisited();
     }
-    setTimeCPU(executionTime);
+    else if (strSearch == 'bidirectional') {
+      bidirectional(thisMap);
+      executionTime = Date.now() - start;
+      nodeVisited();
+      nodeVisitedbi();
+  }
+  exctimeEle.innerHTML += executionTime + ' milliseconds';
 }
 
 function nodeVisited() {
@@ -1043,8 +1040,6 @@ function nodeVisited() {
         if(i%2==0)
         {
           var thisShow = show[i/2];
-          console.log('thisShow : '+ thisShow + '     show[i] : ' + show[i/2]);
-          var idArrow = showMap + "-arrow-0" ;
           for (var c = 0; c < thisShow.length; c++){
             if(c == 0){
               strPath += c;
@@ -1053,14 +1048,30 @@ function nodeVisited() {
             }
             else if(thisShow[c] == '>')
             {
-              strPath += ' -> ' + thisShow[c+2];
-              var idCircle = showMap + "-circle" + thisShow[c+2];
-              idArrow += '-' + thisShow[c+2];
+              if(c!=4) var firstPlanet = strPath.charAt(strPath.length-1);
+              else var firstPlanet = '0';
+              var secondPlanet = thisShow[c+2];
+              var num = c;
+                if(thisShow[c+3]>='0' && thisShow[c+3]<='9'){
+                  secondPlanet = thisShow[c+2] + thisShow[c+3];
+                  num++;
+                }
+                if(thisShow[c-8]>='0' && thisShow[c-8]<='9'){
+                  firstPlanet = strPath.charAt(strPath.length-2) + strPath.charAt(strPath.length-1);
+                }
+              time += parseInt(thisShow[num+4]);
+              currentFuel += parseInt(thisShow[num+6]);
+              strPath += ' -> ' + secondPlanet;
+              var idCircle = showMap + "-circle" + secondPlanet;
               document.getElementById(idCircle).style.backgroundColor = "blue";
-              document.getElementById(idArrow).style.backgroundColor = "yellow";
-              idArrow = showMap + "-arrow-" + thisShow[c+2];
-              time += parseInt(thisShow[c+4]);
-              currentFuel += parseInt(thisShow[c+6]);
+              //----------Arrow interface here------------
+              var idArrow = showMap + "-arrow-";
+              if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+                idArrow+=secondPlanet+'-'+firstPlanet;
+              }
+              else idArrow+=firstPlanet+'-'+secondPlanet;
+              var arrow = document.getElementById(idArrow);
+              if(arrow != null) arrow.style.backgroundColor="yellow";
               c += 6;
             }
           }
@@ -1076,20 +1087,140 @@ function nodeVisited() {
         if (i < show.length*2-1) {
             myLoop(); //  ..  again which will trigger another 
         } //  ..  setTimeout()
+
     }, resetDelay)
   }
 
   myLoop();
-    /*$.get(mapHtml, null, function(){
-        $(idCircle).css('background-color', 'yellow');
-    });*/
 
   return null;
 }
 
-function setTimeCPU(executionTime){
-    exctimeEle.innerHTML += executionTime + ' milliseconds';
+function nodeVisitedbi(){
+  var i = 0;
+  var currentFuel = 0;
+  var time = 0;
+  function myLoop() { //  create a loop function
+    setTimeout(function() {
+        if(i%2==0)
+        {
+          var thisShow = show1[i/2];
+          console.log(thisShow);
+          for (var c = 0; c < thisShow.length; c++){
+            if(c == 0){
+              strPath1 += goal;
+              var idCircle = showMap + "-circle" + goal;
+              document.getElementById(idCircle).style.backgroundColor = "blue";
+            }
+            else if(thisShow[c] == '>')
+            {
+              if(goal>9 && c!=5) var firstPlanet = strPath1.charAt(strPath1.length-1);
+              else if(goal<10 && c!=4) var firstPlanet = strPath1.charAt(strPath1.length-1);
+              else var firstPlanet = goal;
+              var secondPlanet = thisShow[c+2];
+              var num = c;
+                if(thisShow[c+3]>='0' && thisShow[c+3]<='9'){
+                  secondPlanet = thisShow[c+2] + thisShow[c+3];
+                  num++;
+                }
+                if(thisShow[c-8]>='0' && thisShow[c-8]<='9'){
+                  firstPlanet = strPath1.charAt(strPath1.length-2) + strPath1.charAt(strPath1.length-1);
+                }
+              time += parseInt(thisShow[num+4]);
+              currentFuel += parseInt(thisShow[num+6]);
+              strPath1 += ' -> ' + secondPlanet;
+              var idCircle = showMap + "-circle" + secondPlanet;
+              document.getElementById(idCircle).style.backgroundColor = "blue";
+              //----------Arrow interface here------------
+              var idArrow = showMap + "-arrow-";
+              if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+                idArrow+=secondPlanet+'-'+firstPlanet;
+              }
+              else idArrow+=firstPlanet+'-'+secondPlanet;
+              var arrow = document.getElementById(idArrow);
+              if(arrow != null) arrow.style.backgroundColor="yellow";
+              c += 6;
+            }
+            console.log(time,currentFuel,firstPlanet,secondPlanet,idArrow);
+          }
+          resetDelay = delay;
+          setString(currentFuel,time);
+        }
+        else{
+          resetElebi();
+          time = 0;
+          currentFuel= 0;
+        }
+        i++; //  increment the counter
+        if (i < show1.length*2-1) {
+            myLoop(); //  ..  again which will trigger another 
+        } //  ..  setTimeout()
+
+    }, resetDelay)
+  }
+
+  myLoop();
+
+  return null;
 }
+
+
+function resetEle()
+{
+    fuelEle.innerHTML = "Used Fuel : ";
+    timeEle.innerHTML = "Traveled Time (Cost) : ";
+    pathEle.innerHTML = "Path : ";
+    
+    resetDelay = 500;
+
+    for(var i=0;i<=goal;i++){
+        var idCircle = showMap + "-circle" + i;
+        document.getElementById(idCircle).style.backgroundColor = "white";      
+    }
+    for(var i=0;i<strPath.length;i++){
+      var idArrow = showMap + '-arrow-';
+      if(strPath[i]=='>')
+      {
+        var firstPlanet = strPath[i-3];
+        var secondPlanet = strPath[i+2];
+          if(strPath[i-4]!=' ' && i>=4) firstPlanet = strPath[i-4]+strPath[i-3];
+          if(strPath[i+3]!=' ' && strPath.length>i+3) secondPlanet = strPath[i+2]+strPath[i+3];
+        if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+          idArrow+=secondPlanet+'-'+firstPlanet;
+        }
+        else idArrow+=firstPlanet+'-'+secondPlanet;
+        var arrow = document.getElementById(idArrow);
+        if (arrow != null) arrow.style.background = "black";
+      }
+    }
+
+    strPath = "";
+    return null;
+}
+
+function resetElebi()
+{
+    for(var i=0;i<strPath1.length;i++){
+      var idArrow = showMap + '-arrow-';
+      if(strPath1[i]=='>')
+      {
+        var firstPlanet = strPath1[i-3];
+        var secondPlanet = strPath1[i+2];
+          if(strPath1[i-4]!=' ' && i>=4) firstPlanet = strPath1[i-4]+strPath1[i-3];
+          if(strPath1[i+3]!=' ' && strPath1.length>i+3) secondPlanet = strPath1[i+2]+strPath1[i+3];
+        if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+          idArrow+=secondPlanet+'-'+firstPlanet;
+        }
+        else idArrow+=firstPlanet+'-'+secondPlanet;
+        var arrow = document.getElementById(idArrow);
+        if (arrow != null) arrow.style.background = "black";
+      }
+    }
+
+    strPath1 = "";
+    return null;
+}
+
 
 function setString(currentFuel,time){
     fuelEle.innerHTML = 'Used Fuel : '+ currentFuel;
@@ -1097,90 +1228,6 @@ function setString(currentFuel,time){
     pathEle.innerHTML = 'Path : '+ strPath;
     return null;
 }
-
-function arrowPassed(){
-    return null;
-}
-
-
-
-/*--------------- iterative deepening search is here --------------*/
-
-function iterativeDeepeningSearch(mapUse) {
-    var depth = 1;
-    const start = mapUse.startPlanet;
-    goal = mapUse.endPlanet;
-    const fuelLimit = mapUse.fuelLimit;
-    const planets = mapUse.Planets;
-    var currentFuel = 0;
-    var time = 0;
-
-    //increase depth here
-    while (!bottomReached) {
-        bottomReached = true;
-        var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
-        if (result != null) {
-            console.log(strPath);
-            return result;
-        }
-        depth += 1;
-        console.log("Increasing depth to " + depth);
-    }
-
-    return null;
-}
-
-//Search each iteration here
-function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time) {
-    if (currentFuel <= fuelLimit) {
-        console.log("Visiting Planet " + currentPlanet);
-        //-----nodeVisited(currentPlanet);
-        setString(currentFuel,time,currentPlanet);
-        if (currentPlanet === goal) {
-            // We have found the goal node we're searching for
-            console.log("Tom has found Jerry!");
-            return currentPlanet;
-        }
-        if (currentDepth === maxDepth) {
-            console.log("Current maximum depth reached, returning...");
-            // We have reached the end for this depth...
-            if (planets[currentPlanet].linkedPlanets.length > 0) {
-                //...but we have not yet reached the bottom of the tree
-                bottomReached = false;
-                currentFuel = 0;
-                time = 0
-                console.log("Haven't reach bottom yet.");
-            }
-            return null;
-        }
-        // Recurse with all children
-        for (var i = 0; i < planets[currentPlanet].linkedPlanets.length; i++) {
-            currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
-            time += planets[currentPlanet].time;
-            console.log("this planet time: " + planets[currentPlanet].time);
-            console.log("Current Fuel usage: " + currentFuel + ", Time: " + time);
-            var result = deepeningSearch(planets[currentPlanet].linkedPlanets[i].planetNumber, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
-            if (result != null) {
-                // We've found the goal node while going down that child
-                return result;
-            }
-        }
-        //---resetEle(goal);
-    }
-    else{
-        console.log("Not enough fuel finding others way...");
-        // We have reached the end for this depth...
-        if (planets[currentPlanet].linkedPlanets.length > 0) {
-            //...but we have not yet reached the bottom of the tree
-            bottomReached = false;
-            currentFuel = 0;
-            time = 0
-            console.log("Haven't reach bottom yet.");
-        }
-        return null;
-    }
-}
-
 
 
 
@@ -1234,6 +1281,7 @@ class searchNode {
 function uniformCost(mapUse) {
     startPlanet = mapUse.startPlanet;
     goalPlanet = mapUse.endPlanet;
+    goal = goalPlanet;
     console.log(mapUse.endPlanet)
     const fuelLimit = mapUse.fuelLimit;
     for (let i = 0; i < mapUse.Planets.length; i++) {
@@ -1354,3 +1402,304 @@ function successor(state, action) {
     return action.planetNumber;
 }
 
+
+
+
+/*------------------------------------bidirectional uniform cost search here ------------------------------------- */
+function bidirectional(map) {
+  startPlanet = map.startPlanet;
+  goalPlanet = map.endPlanet;
+  goal = goalPlanet;
+  console.log(map.endPlanet);
+  const fuelLimit = map.fuelLimit;
+  for (let i = 0; i < map.Planets.length; i++) {
+      mapPlanets.set(i, map.Planets[i].linkedPlanets);
+  }
+  // console.log(mapPlanets)
+  if (goalTestLeft(startPlanet)) {
+      console.log("Initial state is the goal state.");
+      return [startPlanet];
+  }
+  if (goalTestRight(goalPlanet)) {
+      console.log("Initial state is the goal state.");
+      return [goalPlanet];
+  }
+  // It is a Priority Queue
+  // Actions other than shift() and enqueue() are prohibited.
+  let priorityQueueA = [];
+  let priorityQueueB = [];
+  priorityQueueA.enqueue = function (item) {
+      let added = false;
+      for (let i = 0; i < priorityQueueA.length; i++) {
+          console.log("ITEM: ", priorityQueueA[i].state);
+          console.log("COST: ", priorityQueueA[i].pathCost());
+          if (item.pathCost() < priorityQueueA[i].pathCost()) {
+              priorityQueueA.splice(i, 0, item);
+              added = true;
+              return;
+          }
+      }
+      if (!added) {
+          priorityQueueA.push(item);
+      }
+  };
+  priorityQueueB.enqueue = function (item) {
+      let added = false;
+      for (let i = 0; i < priorityQueueB.length; i++) {
+          console.log("ITEM: ", priorityQueueB[i].state);
+          console.log("COST: ", priorityQueueB[i].pathCost());
+          if (item.pathCost() < priorityQueueB[i].pathCost()) {
+              priorityQueueB.splice(i, 0, item);
+              added = true;
+              return;
+          }
+      }
+      if (!added) {
+          priorityQueueB.push(item);
+      }
+  };
+  // Add the startPlanet to the Priority Queue.
+  priorityQueueA.enqueue(new searchNode(null, startPlanet, null));
+  priorityQueueB.enqueue(new searchNode(null, goalPlanet, null));
+  let expandedA = [];
+  let expandedB = [];
+  let shortestPath = {
+      state: null,
+      pathCost: null,
+      path: null,
+      usedFuel: null,
+  };
+  while (priorityQueueA.length !== 0 && priorityQueueB.length !== 0) {
+      // console.log("priorityQueue: " + priorityQueue.map(function(planet){
+      //     return planet.state;
+      // }));
+      // Pop an element out of the queue to expand.
+      let parentA = priorityQueueA.shift();
+      let parentB = priorityQueueB.shift();
+      console.log("Popped A: ", parentA.state);
+      console.log("Popped B: ", parentB.state);
+      let newChildStatesA = [];
+      let newChildStatesB = [];
+      // Child states of the current node
+      let actionsListA = actions(parentA.state);
+      console.log(
+          "Found " +
+          actionsListA.length +
+          " successors of " +
+          parentA.state +
+          " : " +
+          actionsListA.map(function (item) {
+              return item.planetNumber;
+          })
+      );
+      let actionsListB = actions(parentB.state);
+      console.log(
+          "Found " +
+          actionsListB.length +
+          " successors of " +
+          parentB.state +
+          " : " +
+          actionsListB.map(function (item) {
+              return item.planetNumber;
+          })
+      );
+      // Add the node to the expanded list to prevent re-expansion.
+      expandedA.push(parentA.state);
+      expandedB.push(parentB.state);
+      console.log("Expanded A list: ", expandedA);
+      console.log("Expanded B list: ", expandedB);
+      // Create successors of each node and push them onto the priorityQueue.
+      for (let i = 0; i < actionsListA.length; i++) {
+          let newS = successor(parentA.state, actionsListA[i]);
+          let newN = new searchNode(actionsListA[i], newS, parentA);
+          console.log(actionsListA[i], parentA, newN);
+          // If the goal is found,
+          // returns the path to the goal.
+          if (goalTestLeft(newS) || expandedB.indexOf(newS) !== -1) {
+              console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
+              console.log("Continuing search to find optimal path.");
+              if (
+                  (newN.pathCost() < shortestPath.pathCost ||
+                      shortestPath.pathCost === null) &&
+                  newN.usedFuel() <= fuelLimit
+              ) {
+                  shortestPath.pathCost = newN.pathCost();
+                  shortestPath.path = newN.path();
+                  shortestPath.state = newS;
+                  shortestPath.usedFuel = newN.usedFuel();
+              }
+          }
+          // If the successor is already expanded,
+          // don't add it to the priorityQueue.
+          else if (expandedA.indexOf(newS) !== -1) {
+              console.log(
+                  "Successor " + newS + " of " + parentA.state + " already expanded."
+              );
+              console.log("Not adding " + newS + " to the priorityQueueA.");
+              console.log("\n");
+          }
+          // Push new successors to the priorityQueue.
+          else {
+              console.log(
+                  "Discovered " +
+                  newN.state +
+                  " with step cost " +
+                  actionsListA[i].time +
+                  " from " +
+                  parentA.state
+              );
+              console.log("Pushing to priorityQueue: " + newS);
+              newChildStatesA.push(newS);
+              priorityQueueA.enqueue(newN);
+              console.log("Path: ", newN.path());
+              show.push(newN.path());
+              console.log(
+                  "Current priorityQueueA: " +
+                  priorityQueueA.map(function (planet) {
+                      return planet.state;
+                  })
+              );
+              console.log("\n");
+          }
+      }
+      for (let i = 0; i < actionsListB.length; i++) {
+          let newS = successor(parentB.state, actionsListB[i]);
+          let newN = new searchNode(actionsListB[i], newS, parentB);
+          console.log(actionsListB[i], parentB, newN);
+          // If the goal is found,
+          // returns the path to the goal.
+          if (goalTestLeft(newS) || expandedA.indexOf(newS) !== -1) {
+              console.log("Crash",newS);
+              console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
+              console.log("Continuing search to find optimal path.");
+              if (
+                  (newN.pathCost() < shortestPath.pathCost ||
+                      shortestPath.pathCost === null) &&
+                  newN.usedFuel() <= fuelLimit
+              ) {
+                  shortestPath.pathCost = newN.pathCost();
+                  shortestPath.path = newN.path();
+                  shortestPath.state = newS;
+                  shortestPath.usedFuel = newN.usedFuel();
+              }
+          }
+          // If the successor is already expanded,
+          // don't add it to the priorityQueue.
+          else if (expandedB.indexOf(newS) !== -1) {
+              console.log(
+                  "SuccessorB " + newS + " of " + parentB.state + " already expanded."
+              );
+              console.log("Not adding " + newS + " to the priorityQueueB.");
+              console.log("\n");
+          }
+          // Push new successors to the priorityQueue.
+          else {
+              console.log(
+                  "Discovered " +
+                  newN.state +
+                  " with step cost " +
+                  actionsListB[i].time +
+                  " from " +
+                  parentA.state
+              );
+              console.log("Pushing to priorityQueue: " + newS);
+              newChildStatesB.push(newS);
+              priorityQueueB.enqueue(newN);
+              show1.push(newN.path());
+              console.log("Path: ", newN.path());
+              console.log(
+                  "Current priorityQueueB: " +
+                  priorityQueueB.map(function (planet) {
+                      return planet.state;
+                  })
+              );
+              console.log("\n");
+          }
+      }
+  }
+  if (shortestPath.pathCost === null) {
+      console.log("Couldn't find path.");
+  } else {
+      console.log(
+          shortestPath.path +
+          " with path cost of time " +
+          shortestPath.pathCost +
+          " and used fuel are " +
+          shortestPath.usedFuel
+      );
+  }
+};
+
+function goalTestLeft(state) {
+  return state === goalPlanet;
+}
+function goalTestRight(state) {
+  return state === startPlanet;
+}
+
+
+
+
+/*--------------- iterative deepening search is here --------------*/
+
+function iterativeDeepeningSearch(mapUse) {
+  var depth = 1;
+  const start = mapUse.startPlanet;
+  goal = mapUse.endPlanet;
+  const fuelLimit = mapUse.fuelLimit;
+  const planets = mapUse.Planets;
+  var currentFuel = 0;
+  var time = 0;
+
+  //increase depth here
+  while (!bottomReached) {
+      bottomReached = true;
+      show1 = [];
+      var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
+      if (result != null) {
+          return result;
+      }
+      depth += 1;
+      console.log("Increasing depth to " + depth);
+  }
+
+  return null;
+}
+
+//Search each iteration here
+function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time) {
+  if (currentFuel <= fuelLimit) {
+      show1.push(currentPlanet);
+      setString(currentFuel,time,currentPlanet);
+      if (currentPlanet === goal) {
+          // We have found the goal node we're searching for
+          console.log("Tom has found Jerry!");
+          return currentPlanet;
+      }
+      if (currentDepth === maxDepth) {
+          console.log("Current maximum depth reached, returning...");
+          // We have reached the end for this depth...
+          if (planets[currentPlanet].linkedPlanets.length > 0) {
+              //...but we have not yet reached the bottom of the tree
+              bottomReached = false;
+              currentFuel = 0;
+              time = 0
+              console.log("Haven't reach bottom yet.");
+          }
+          return null;
+      }
+      // Recurse with all children
+      for (var i = 0; i < planets[currentPlanet].linkedPlanets.length; i++) {
+          console.log("Visiting Planet " + currentPlanet);
+          show.push(currentPlanet);
+          currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
+          time = planets[currentPlanet].time;
+          if(show1.indexOf(planets[currentPlanet].linkedPlanets[i].planetNumber) == -1)
+          var result = deepeningSearch(planets[currentPlanet].linkedPlanets[i].planetNumber, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
+          if (result != null) {
+              // We've found the goal node while going down that child
+              return result;
+          }
+      }
+  }
+}
