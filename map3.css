@@ -497,7 +497,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 170px;
+    margin-top: 60px;
     margin-left: 20px;
     transform: rotate(90deg);
 }
@@ -521,7 +521,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 255px;
+    margin-top: 155px;
     margin-left: -40px;
     transform: rotate(5deg);
 }
@@ -545,7 +545,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 230px;
+    margin-top: 170px;
     margin-left: -60px;
     transform: rotate(30deg);
 }
@@ -593,7 +593,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 80px;
+    margin-top: 0px;
     margin-left: -40px;
     transform: rotate(150deg);
 }

@@ -337,8 +337,8 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 50px;
-    margin-left: -50px;
+    margin-top: -50px;
+    margin-left: -60px;
     transform: rotate(40deg);
 }
 
@@ -505,7 +505,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 50px;
+    margin-top: -110px;
     margin-left: -10px;
     transform: rotate(70deg);
 }
@@ -529,7 +529,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -400px;
+    margin-top: -900px;
     margin-left: -50px;
     transform: rotate(60deg);
 }
