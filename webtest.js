@@ -973,13 +973,13 @@ function resetEle()
       if(strPath[i]=='>')
       {
         var firstPlanet = strPath[i-3];
-        console.log('Reset firstPlanet' +firstPlanet);
-        if(strPath[i+2]<firstPlanet){
-          idArrow+=strPath[i+2]+'-'+firstPlanet;
+        var secondPlanet = strPath[i+2];
+          if(strPath[i-4]!=' ' && i>=4) firstPlanet = strPath[i-4]+strPath[i-3];
+          if(strPath[i+3]!=' ' && strPath.length>i+3) secondPlanet = strPath[i+2]+strPath[i+3];
+        if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+          idArrow+=secondPlanet+'-'+firstPlanet;
         }
-        else idArrow+=firstPlanet+'-'+strPath[i+2];
-        
-        console.log('reset Arrow ID : '+idArrow);
+        else idArrow+=firstPlanet+'-'+secondPlanet;
         var arrow = document.getElementById(idArrow);
         if (arrow != null) arrow.style.background = "black";
       }
@@ -1035,9 +1035,9 @@ function start() {
     } 
     var strSearch = searchEle.options[searchEle.selectedIndex].value;
     var strDelay = delayEle.options[delayEle.selectedIndex].value;
-    if (strDelay == '1') delay = 6000;
-    else if (strDelay == '2') delay = 3000;
-    else if (strDelay == '3') delay = 2000;
+    if (strDelay == '1') delay = 3000;
+    else if (strDelay == '2') delay = 2000;
+    else if (strDelay == '3') delay = 1000;
     var start = Date.now();
     var executionTime = Date.now();
     if (strSearch == 'iterative') {
@@ -1060,7 +1060,9 @@ function nodeVisited() {
         if(i%2==0)
         {
           var thisShow = show[i/2];
+          console.log(thisShow);
           for (var c = 0; c < thisShow.length; c++){
+            console.log(thisShow);
             if(c == 0){
               strPath += c;
               var idCircle = showMap + "-circle" + c;
@@ -1070,23 +1072,31 @@ function nodeVisited() {
             {
               if(c!=4) var firstPlanet = strPath.charAt(strPath.length-1);
               else var firstPlanet = '0';
-              console.log('firstPlanet : '+firstPlanet);
-              strPath += ' -> ' + thisShow[c+2];
-              var idCircle = showMap + "-circle" + thisShow[c+2];
+              var secondPlanet = thisShow[c+2];
+              var num = c;
+                if(thisShow[c+3]>='0' && thisShow[c+3]<='9'){
+                  secondPlanet = thisShow[c+2] + thisShow[c+3];
+                  num++;
+                }
+                if(thisShow[c-8]>='0' && thisShow[c-8]<='9'){
+                  firstPlanet = strPath.charAt(strPath.length-2) + strPath.charAt(strPath.length-1);
+                }
+              time += parseInt(thisShow[num+4]);
+              currentFuel += parseInt(thisShow[num+6]);
+              strPath += ' -> ' + secondPlanet;
+              var idCircle = showMap + "-circle" + secondPlanet;
               document.getElementById(idCircle).style.backgroundColor = "blue";
               //----------Arrow interface here------------
               var idArrow = showMap + "-arrow-";
-              if(thisShow[c+2]<firstPlanet){
-                idArrow+=thisShow[c+2]+'-'+firstPlanet;
+              if(parseInt(secondPlanet)<parseInt(firstPlanet)){
+                idArrow+=secondPlanet+'-'+firstPlanet;
               }
-              else idArrow+=firstPlanet+'-'+thisShow[c+2];
-              console.log(idArrow);
+              else idArrow+=firstPlanet+'-'+secondPlanet;
               var arrow = document.getElementById(idArrow);
               if(arrow != null) arrow.style.backgroundColor="yellow";
-              time += parseInt(thisShow[c+4]);
-              currentFuel += parseInt(thisShow[c+6]);
               c += 6;
             }
+            console.log(time,currentFuel,firstPlanet,secondPlanet,idArrow);
           }
           resetDelay = delay;
           setString(currentFuel,time);
@@ -1141,7 +1151,6 @@ function iterativeDeepeningSearch(mapUse) {
         bottomReached = true;
         var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
         if (result != null) {
-            console.log(strPath);
             return result;
         }
         depth += 1;
@@ -1255,6 +1264,7 @@ class searchNode {
 function uniformCost(mapUse) {
     startPlanet = mapUse.startPlanet;
     goalPlanet = mapUse.endPlanet;
+    goal = goalPlanet;
     console.log(mapUse.endPlanet)
     const fuelLimit = mapUse.fuelLimit;
     for (let i = 0; i < mapUse.Planets.length; i++) {
