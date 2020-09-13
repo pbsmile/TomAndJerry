@@ -333,29 +333,6 @@
         transform: rotate(50deg);
     }
     /*long arrow form 3 to g*/
-    #m1-arrow-0-3.minus::before{
-        
-        width: 390px;
-        height: 5px;
-        background: yellow;
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: 170px;
-        transform: rotate(50deg);
-    }
-    #m1-arrow-0-1.minus::before{
-        
-        width: 390px;
-        height: 5px;
-        background: yellow;
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: 170px;
-        transform: rotate(50deg);
-    }
-    
     #m1-arrow-4-6:after {
         content: "";
         display: inline-block !important;
