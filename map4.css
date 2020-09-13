@@ -684,7 +684,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 120px;
+    margin-top: -50px;
     margin-left: -70px;
     transform: rotate(45deg);
 }
@@ -732,7 +732,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 330px;
+    margin-top: 250px;
     margin-left: -280px;
     transform: rotate(125deg);
 }
@@ -780,7 +780,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 320px;
+    margin-top: 250px;
     margin-left: -110px;
     transform: rotate(60deg);
 }
@@ -804,7 +804,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -440px;
+    margin-top: -640px;
     margin-left: -400px;
     transform: rotate(80deg);
 }
@@ -828,7 +828,7 @@ body {
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: 520px;
+    margin-top: 420px;
     margin-left: 10px;
     transform: rotate(130deg);
 }
