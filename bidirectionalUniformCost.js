@@ -7,16 +7,31 @@ class searchNode {
 
     // Returns a list of pairs corresponding to
     // the path starting at the top (root) of the tree.
-    path() {
-        if (this.parent === null) {
-            return [this.state, this.action];
-        } else {
-            return (
-                this.parent.path() +
-                " -> " +
-                [this.state, this.action.time, this.action.useFuel]
-            );
+    path(position) {
+        if(position==='left'){
+            if (this.parent === null) {
+                return [this.state];
+            } else {
+                return (
+                    this.parent.path('left') +
+                    " -> " +
+                    [this.state, this.action.time, this.action.useFuel]
+                );
+            }
         }
+        else if(position==='right'){
+            if (this.parent === null) {
+                return [this.state];
+            } else {
+                return (
+                    [this.state, this.action.time, this.action.useFuel]+
+                    " -> " +
+                    this.parent.path('right')
+                    
+                );
+            }
+        }
+       
     }
 
     pathCost() {
@@ -108,6 +123,8 @@ module.exports.biunc = function uniformCost(map) {
     priorityQueueB.enqueue(new searchNode(null, goalPlanet, null));
     let expandedA = [];
     let expandedB = [];
+    let allPathA =[];
+    let allPathB = [];
     let shortestPath = {
         state: null,
         pathCost: null,
@@ -153,6 +170,8 @@ module.exports.biunc = function uniformCost(map) {
         // Add the node to the expanded list to prevent re-expansion.
         expandedA.push(parentA.state);
         expandedB.push(parentB.state);
+        allPathA.push(parentA);
+        allPathB.push(parentB);
         console.log("Expanded A list: ", expandedA);
         console.log("Expanded B list: ", expandedB);
 
@@ -160,22 +179,41 @@ module.exports.biunc = function uniformCost(map) {
         for (let i = 0; i < actionsListA.length; i++) {
             let newS = successor(parentA.state, actionsListA[i]);
             let newN = new searchNode(actionsListA[i], newS, parentA);
-            console.log(actionsListA[i], parentA, newN);
+            //console.log(actionsListA[i], parentA, newN);
 
             // If the goal is found,
             // returns the path to the goal.
-            if (goalTestLeft(newS) || expandedB.indexOf(newS) !== -1) {
-                console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
-                console.log("Continuing search to find optimal path.");
-                if (
-                    (newN.pathCost() < shortestPath.pathCost ||
-                        shortestPath.pathCost === null) &&
-                    newN.usedFuel() <= fuelLimit
-                ) {
-                    shortestPath.pathCost = newN.pathCost();
-                    shortestPath.path = newN.path();
-                    shortestPath.state = newS;
-                    shortestPath.usedFuel = newN.usedFuel();
+            if ((goalTestLeft(newS) || expandedB.indexOf(newS) !== -1)) {
+                if(expandedB.indexOf(newS)!==-1){
+                    let found = allPathB.find(item=>item.state===newS);
+                    found=found.parent;
+                    console.log("FoundA",found);
+                    if(found){
+                        console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
+                        console.log("Path is "+newN.path('left')+" -> "+found.path('right'));
+                        console.log("Continuing search to find optimal path.");
+                        if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                            shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                            shortestPath.path = newN.path('left')+" -> "+found.path('right');
+                            shortestPath.state = newS;
+                            shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                        }
+                    }
+                }
+                // console.log("Crash",priorityQueueA[priorityQueueA.length-1]);
+                // console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+priorityQueueA[priorityQueueA.length-1].pathCost());
+                // console.log("Continuing search to find optimal path.");
+                else {
+                    console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
+                    console.log("Path is "+newN.path('left'));
+                    console.log("Continuing search to find optimal path.");
+                    if ((newN.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()<= fuelLimit) {
+                        shortestPath.pathCost = newN.pathCost();
+                        shortestPath.path = newN.path('left');
+                        shortestPath.state = newS;
+                        shortestPath.usedFuel = newN.usedFuel();
+                    }
+                    
                 }
             }
 
@@ -202,7 +240,7 @@ module.exports.biunc = function uniformCost(map) {
                 console.log("Pushing to priorityQueue: " + newS);
                 newChildStatesA.push(newS);
                 priorityQueueA.enqueue(newN);
-                console.log("Path: ", newN.path());
+                console.log("Path: ", newN.path('left'));
                 console.log(
                     "Current priorityQueueA: " +
                     priorityQueueA.map(function (planet) {
@@ -215,23 +253,38 @@ module.exports.biunc = function uniformCost(map) {
         for (let i = 0; i < actionsListB.length; i++) {
             let newS = successor(parentB.state, actionsListB[i]);
             let newN = new searchNode(actionsListB[i], newS, parentB);
-            console.log(actionsListB[i], parentB, newN);
+             //console.log(actionsListB[i], parentB, newN);
 
             // If the goal is found,
             // returns the path to the goal.
-            if (goalTestLeft(newS) || expandedA.indexOf(newS) !== -1) {
-                console.log("Crash",newS);
-                console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
-                console.log("Continuing search to find optimal path.");
-                if (
-                    (newN.pathCost() < shortestPath.pathCost ||
-                        shortestPath.pathCost === null) &&
-                    newN.usedFuel() <= fuelLimit
-                ) {
-                    shortestPath.pathCost = newN.pathCost();
-                    shortestPath.path = newN.path();
-                    shortestPath.state = newS;
-                    shortestPath.usedFuel = newN.usedFuel();
+            if (goalTestRight(newS)|| expandedA.indexOf(newS) !== -1 ) {
+                if(expandedA.indexOf(newS)!==-1){
+                    let found = allPathA.find(item=>item.state===newS);
+                    // found=found.parent;
+                    console.log("FoundB",found);
+                    if(found){
+                        console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
+                        console.log("Path is "+found.path('left')+" -> "+newN.path('right'))
+                        console.log("Continuing search to find optimal path.");
+                        if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                            shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                            shortestPath.path = found.path('left')+" -> "+newN.path('right');
+                            shortestPath.state = newS;
+                            shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                        }
+                    }
+                }
+                else {
+                    console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
+                    console.log("Path is "+newN.path('right'));
+                    console.log("Continuing search to find optimal path.");
+                    if ((newN.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()<= fuelLimit) {
+                        shortestPath.pathCost = newN.pathCost();
+                        shortestPath.path = newN.path('right');
+                        shortestPath.state = newS;
+                        shortestPath.usedFuel = newN.usedFuel();
+                    }
+                  
                 }
             }
 
@@ -258,7 +311,7 @@ module.exports.biunc = function uniformCost(map) {
                 console.log("Pushing to priorityQueue: " + newS);
                 newChildStatesB.push(newS);
                 priorityQueueB.enqueue(newN);
-                console.log("Path: ", newN.path());
+                console.log("Path: ", newN.path('left'));
                 console.log(
                     "Current priorityQueueB: " +
                     priorityQueueB.map(function (planet) {
