@@ -914,9 +914,6 @@ let mapstruct = [
 function initial(){
     window.thisMap = mapstruct[0];
     window.delay = 3000;
-<<<<<<< HEAD
-    window.showMap = "m1-disable";
-=======
     window.resetDelay = 500;
     window.strFuel = "";
     window.strTime = "";
@@ -924,18 +921,13 @@ function initial(){
     window.strPath1 = "";
     window.show = [];
     window.show1 = [];
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     window.fuelEle = document.getElementById("fuel");
     window.timeEle = document.getElementById("time");
     window.pathEle = document.getElementById("path");
     window.searchEle = document.getElementById('search');
     window.delayEle = document.getElementById('delay');
-<<<<<<< HEAD
-    window.mapEle = "";
-=======
     window.exctimeEle = document.getElementById('exctime');
     window.mapHtml = "";
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     window.bottomReached = false;
     window.showMap = "m1";
     window.goal = 6;
@@ -973,62 +965,33 @@ function randommap() {
     document.getElementById(showMap).style.visibility = "hidden";
     var map = Math.floor(Math.random() * 5) + 1;
     var x = "";
-<<<<<<< HEAD
-    document.getElementById(showMap).style.visibility = "hidden";
-    
-    if(map == 1){
-        thisMap = mapstruct[0];
-        x = "Map Pakbung";
-        mapEle = "m1";
-=======
     if(map == 1){
         thisMap = mapstruct[0];
         x = "Map Pakbung";
         showMap = "m1";
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     }
     if (map == 2) {
         thisMap = mapstruct[1];
         x = "Map Nice";
-<<<<<<< HEAD
-        mapEle = "m2";
-=======
         showMap = "m2";
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     }
     if (map == 3) {
         thisMap = mapstruct[2];
         x = "Map Namob";
-<<<<<<< HEAD
-        mapEle = "m3";
-=======
         showMap = "m3";
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     }
     if (map == 4) {
         thisMap = mapstruct[3];
         x = "Map Aon";
-<<<<<<< HEAD
-        mapEle = "m4";
-=======
         showMap = "m4";
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
     }
     if (map == 5) {
         thisMap = mapstruct[4];
         x = "Map Little";
-<<<<<<< HEAD
-        mapEle = "m5";
-    }
-    document.getElementById('map').textContent = x
-    showMap = mapEle + '-disable';
-    document.getElementById(showMap).style.visibility = "visible";
-=======
         showMap = "m5";
     }
     document.getElementById('map').textContent = x
     document.getElementById(showMap).style.visibility = "visible"
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
 }
 
 function start() {
@@ -1047,21 +1010,6 @@ function start() {
     if (strDelay == '1') delay = 3000;
     else if (strDelay == '2') delay = 2000;
     else if (strDelay == '3') delay = 1000;
-<<<<<<< HEAD
-
-    var start = Date.now();
-    var executetime;
-    if (strSearch == 'iterative') {
-        iterativeDeepeningSearch(thisMap);
-        executetime = Date.now() - start;
-        console.log(navigator.hardwareConcurrency);
-    } else if (strSearch == 'uniform') {
-        unc(thisMap);
-        executetime = Date.now() - start;
-        console.log(navigator.hardwareConcurrency);
-    }
-    console.log(navigator.hardwareConcurrency)
-=======
     var start = Date.now();
     var executionTime = Date.now();
     if (strSearch == 'iterative') {
@@ -1081,7 +1029,6 @@ function start() {
       nodeVisitedbi();
   }
   exctimeEle.innerHTML += executionTime + ' milliseconds';
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
 }
 
 function nodeVisited() {
@@ -1445,22 +1392,10 @@ function goalTest(state) {
     return state === goalPlanet;
 }
 
-<<<<<<< HEAD
-function nodeVisited(currentNode) {
-    setTimeout(()=>{
-        var idCircle = mapEle + "-circle" + currentNode;
-        console.log(idCircle);},delay);
-    //document.getElementById(idCircle).style.backgroundColor = "yellow";
-    /*$.get(mapHtml, null, function(){
-        $(idCircle).css('background-color', 'yellow');
-    });*/
-    return null;
-=======
 function actions(state) {
     // Returns an array of objects
     // [{ useFuel: int, time: integer,planetNumber:int }, ... ]
     return mapPlanets.get(state);
->>>>>>> 7af35f3a8ec5a61c47a4bec9a7098ffbda2b93ac
 }
 
 function successor(state, action) {
