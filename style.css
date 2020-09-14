@@ -27,6 +27,10 @@ pre {
     width: 65%;
 }
 
+#result-2 {
+    visibility: hidden;
+}
+
 object {
     height: 100%;
     width: 100%;
@@ -112,7 +116,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 30%;
+    top: 15%;
     background-color: #000;
     padding: 15px 20px;
     radius: 3px;
@@ -129,7 +133,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 40%;
+    top: 25%;
     background-color: #000;
     padding: 7px 20px;
     radius: 3px;
@@ -143,7 +147,7 @@ html {
     width: 200px;
     position: absolute;
     left: 70%;
-    top: 47%;
+    top: 32%;
     background-color: #000;
     padding: 7px 20px;
     radius: 3px;
@@ -161,10 +165,57 @@ html {
     color: #cedebd;
 }
 
+.shfuel-s {
+    position: absolute;
+    left: 70%;
+    top: 40%;
+    border: none;
+    color: #cedebd;
+}
+
+.shfuel-g {
+    position: absolute;
+    left: 70%;
+    top: 45%;
+    border: none;
+    color: #cedebd;
+}
+
+.shfuel-s-g {
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    border: none;
+    color: #cedebd;
+}
+
 .shtime {
     position: absolute;
     left: 70%;
     top: 60%;
+    border: none;
+    color: #cedebd;
+}
+
+.shtime-s {
+    position: absolute;
+    left: 70%;
+    top: 55%;
+    border: none;
+    color: #cedebd;
+}
+
+.shtime-g {
+    position: absolute;
+    left: 70%;
+    top: 60%;
+    border: none;
+    color: #cedebd;
+}
+.shtime-s-g {
+    position: absolute;
+    left: 70%;
+    top: 65%;
     border: none;
     color: #cedebd;
 }
@@ -175,10 +226,41 @@ html {
     border: none;
     color: #cedebd;
 }
+
+.shpath-s {
+    position: absolute;
+    left: 70%;
+    top: 70%;
+    border: none;
+    color: #cedebd;
+}
+.shpath-g {
+    position: absolute;
+    left: 70%;
+    top: 75%;
+    border: none;
+    color: #cedebd;
+}
+.shpath-s-g {
+    position: absolute;
+    left: 70%;
+    top: 80%;
+    border: none;
+    color: #cedebd;
+}
+
 .shexctime {
     position: absolute;
     left: 70%;
     top: 70%;
+    border: none;
+    color: #cedebd;
+}
+
+.shexctime-s-g {
+    position: absolute;
+    left: 70%;
+    top: 85%;
     border: none;
     color: #cedebd;
 }
@@ -193,15 +275,15 @@ html {
 .col {
     height: 100%;
     position: absolute;
-    left: 64%;
-    top: 70%;
+    left: 65%;
+    top: 78%;
 }
 
 .col2 {
     height: 100%;
     position: absolute;
-    left: 74%;
-    top: 70%;
+    left: 75%;
+    top: 78%;
 }
 
 div[class*=containerbtn] {
