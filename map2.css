@@ -61,7 +61,7 @@ body {
 
 .grid-container-map2 {
     position: fixed;
-    top: 20%;
+    top: 25%;
     /* padding-top: 100px; */
     padding-right: 30px;
     padding-left: 100px;
@@ -71,7 +71,7 @@ body {
     grid-template-columns: 10px 20px 20px 80px 20px 80px 20px 80px 50px 20px 20px;
     grid-template-rows: 1px 1px 1px 1px 1px 1px 1px;
     grid-gap: 100px;
-    margin-left: 0%;
+    margin-left: 5%;
 }
 
 #m2-circle0 {
@@ -234,7 +234,7 @@ body {
     margin-left: -55px;
 }
 
-.m2-arrow-1-2:after {
+#m2-arrow-1-2:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -242,7 +242,7 @@ body {
     margin-left: 650px;
 }
 
-.m2-arrow-1-2:before {
+#m2-arrow-1-2 {
     width: 325px;
     height: 5px;
     background: black;
@@ -256,7 +256,7 @@ body {
 
 /*long arrow from 4 to 5*/
 
-.m2-arrow-s-5:after {
+#m2-arrow-0-5:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -265,22 +265,22 @@ body {
     transform: rotate(30deg);
 }
 
-.m2-arrow-s-5::before {
+#m2-arrow-0-5 {
     width: 650px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -80px;
-    margin-left: -250px;
+    margin-top: -180px;
+    margin-left: -270px;
     transform: rotate(30deg);
 }
 
 
 /*long arrow from 3 to 5*/
 
-.m2-arrow-3-5:after {
+#m2-arrow-3-5:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -289,22 +289,22 @@ body {
     transform: rotate(90deg);
 }
 
-.m2-arrow-3-5::before {
+#m2-arrow-3-5 {
     width: 200px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -600px;
-    margin-left: -380px;
+    margin-top: 180px;
+    margin-left: -530px;
     transform: rotate(90deg);
 }
 
 
 /*long arrow from 4 to 5*/
 
-.m2-arrow-4-5:after {
+#m2-arrow-4-5:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -313,7 +313,7 @@ body {
     transform: rotate(40deg);
 }
 
-.m2-arrow-4-5::before {
+#m2-arrow-4-5 {
     width: 270px;
     height: 5px;
     background: black;
@@ -328,7 +328,7 @@ body {
 
 /*long arrow form s to 1*/
 
-.m2-arrow-s-1:after {
+#m2-arrow-0-1:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -337,7 +337,7 @@ body {
     transform: rotate(145deg);
 }
 
-.m2-arrow-s-1::before {
+#m2-arrow-0-1 {
     width: 260px;
     height: 5px;
     background: black;
@@ -352,7 +352,7 @@ body {
 
 /*long arrow form 3 to g*/
 
-.m2-arrow-3-g:after {
+#m2-arrow-3-6:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -361,7 +361,7 @@ body {
     transform: rotate(20deg);
 }
 
-.m2-arrow-3-g::before {
+#m2-arrow-3-6 {
     width: 360px;
     height: 5px;
     background: black;
@@ -376,7 +376,7 @@ body {
 
 /*long arrow from 5 to g*/
 
-.m2-arrow-5-g:after {
+#m2-arrow-5-6:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -385,7 +385,7 @@ body {
     transform: rotate(155deg);
 }
 
-.m2-arrow-5-g::before {
+#m2-arrow-5-6 {
     width: 380px;
     height: 5px;
     background: black;
@@ -400,7 +400,7 @@ body {
 
 /*long arrow from 2 to g*/
 
-.m2-arrow-2-g:after {
+#m2-arrow-2-6:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -409,7 +409,7 @@ body {
     transform: rotate(50deg);
 }
 
-.m2-arrow-2-g::before {
+#m2-arrow-2-6 {
     width: 350px;
     height: 5px;
     background: black;
@@ -424,7 +424,7 @@ body {
 
 /*long arrow from 3 to 4*/
 
-.m2-arrow-3-4:after {
+#m2-arrow-3-4:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -433,7 +433,7 @@ body {
     transform: rotate(160deg);
 }
 
-.m2-arrow-3-4::before {
+#m2-arrow-3-4 {
     width: 160px;
     height: 5px;
     background: black;
@@ -448,7 +448,7 @@ body {
 
 /*long arrow from 1 to 3*/
 
-.m2-arrow-1-3:after {
+#m2-arrow-1-3:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -457,7 +457,7 @@ body {
     transform: rotate(40deg);
 }
 
-.m2-arrow-1-3::before {
+#m2-arrow-1-3 {
     width: 215px;
     height: 5px;
     background: black;

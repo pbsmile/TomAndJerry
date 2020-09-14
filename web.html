@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <script type="text/javascript" src="./webtest.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <title>Tom and Jerry</title>
+
     <head>
         <script type="text/javascript" src="./webtest.js"></script>
         <meta charset="UTF-8">
@@ -45,13 +55,13 @@
             <!--<div id="head">Tom and Jerry</div>-->
         </div>
 
-        <div id= "m1-disable" class="grid-container-map1 m1-disable m1-rescale">
+        <div class="grid-container-map1 m1-disable m1-rescale" id="m1">
             <!-- row1 -->
             <h4 id="m1-circle0"><img src='png/Tom.png'></h4>
             <h4>
-                <div class="m1-arrow-s-1"></div>
+                <div id="m1-arrow-0-1"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-45px; margin-left:325px;">1</div>
-                <div class="time-color" style="font-size: 25px; margin-top:-85px; margin-left:-120px;">t=0</div>
+                <div class="time-color" style="font-size: 25px; margin-top:-105px; margin-left:-120px;">t=0</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-30px; margin-left:715px;">t=4</div>
             </h4>
             <h4>
@@ -62,8 +72,8 @@
             <h4></h4>
             <h4 id="m1-circle1">1</h4>
             <h4>
-                <div class="m1-arrow-1-2"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:125px;">2</div>
+                <div id="m1-arrow-1-2"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:125px;">2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-35px; margin-left:320px;">t=2</div>
             </h4>
             <h4></h4>
@@ -72,10 +82,10 @@
 
             <!-- row2 -->
             <h4>
-                <div class="m1-arrow-s-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-100px; margin-left:155px;">4</div>
+                <div id="m1-arrow-0-3"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-10px; margin-left:155px;">4</div>
                 <div class="time-color" style="font-size: 25px; margin-top:60px; margin-left:350px;">t=1</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:160px; margin-left:50px;">fuel=12</div>
+                <div class="fuel-color" style="font-size: 50px; margin-top:160px; margin-left:50px;">fuel=12</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -84,8 +94,8 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m1-arrow-2-3"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:95px;">4</div>
+                <div id="m1-arrow-2-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:95px;">4</div>
                 <div class="time-color" style="font-size: 25px; margin-top:0px; margin-left:-130px;">t=0</div>
             </h4>
             <h4></h4>
@@ -101,8 +111,8 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m1-arrow-2-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-170px; margin-left:105px;">3</div>
+                <div id="m1-arrow-2-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:105px;">3</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -113,8 +123,8 @@
             <h4></h4>
             <h1></h1>
             <h4>
-                <div class="m1-arrow-1-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:235px;">2</div>
+                <div id="m1-arrow-1-3"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:235px;">2</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -133,8 +143,8 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m1-arrow-3-g"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-150px; margin-left:125px;">2</div>
+                <div id="m1-arrow-4-6"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:125px;">2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:55px; margin-left:320px;">t=0</div>
             </h4>
             <h4></h4>
@@ -146,8 +156,8 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m1-arrow-4-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:155px;">3</div>
+                <div id="m1-arrow-3-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:155px;">3</div>
                 <div class="time-color" style="font-size: 25px; margin-top:15px; margin-left:300px;">t=3</div>
             </h4>
             <h4></h4>
@@ -166,7 +176,7 @@
             <h4></h4>
             <h4 id="m1-circle5">5</h4>
             <h4>
-                <div class="m1-arrow-5-g"></div>
+                <div id="m1-arrow-5-6"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-45px; margin-left:165px;">6</div>
             </h4>
             <h4></h4>
@@ -176,16 +186,16 @@
         </div>
         </div>
 
-        <div id= "m2-disable" class="grid-container-map2 m2-disable m2-rescale">
+        <div class="grid-container-map2 m2-disable m2-rescale" id="m2">
             <!-- row1 -->
             <h4></h4>
             <h4></h4>
             <h4></h4>
             <h4 id="m2-circle1">1</h4>
             <h4>
-                <div class="m2-arrow-1-2"></div>
+                <div id="m2-arrow-1-2"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-45px; margin-left:60px;">1</div>
-                <div class="time-color" style="font-size: 25px; margin-top:-85px; margin-left:-180px;">t=2</div>
+                <div class="time-color" style="font-size: 25px; margin-top:-105px; margin-left:-180px;">t=2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-30px; margin-left:295px;">t=2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:180px; margin-left:-540px;">t=0</div>
             </h4>
@@ -198,23 +208,23 @@
 
             <!-- row2 -->
             <h4>
-                <div class="m2-arrow-s-1"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-170px; margin-left:185px;">1</div>
+                <div id="m2-arrow-0-1"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:185px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:110px; margin-left:350px;">t=2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:190px; margin-left:250px;">2</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:200px; margin-left:50px;">fuel=7</div>
+                <div class="fuel-color" style="font-size: 50px; margin-top:200px; margin-left:50px;">fuel=7</div>
             </h4>
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-1-3"></div>
+                <div id="m2-arrow-1-3"></div>
             </h4>
             <h4></h4>
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-2-g"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:45px;">2</div>
+                <div id="m2-arrow-2-6"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:45px;">2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-130px; margin-left:-440px;">2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:10px; margin-left:-300px;">t=0</div>
             </h4>
@@ -231,9 +241,9 @@
             <h4 id="m2-circle3">3</h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-5-g"></div>
-                <div class="m2-arrow-3-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-380px; margin-left:-310px;">2</div>
+                <div id="m2-arrow-5-6"></div>
+                <div id="m2-arrow-3-5"></div>
+               <div class="fuel-color" style="font-size: 25px; margin-top:-130px; margin-left:-310px;">2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:120px; margin-left:-50px;">8</div>
             </h4>
             <h4></h4>
@@ -244,8 +254,8 @@
             <h4></h4>
             <h1></h1>
             <h4>
-                <div class="m2-arrow-3-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-110px; margin-left:280px;">1</div>
+                <div id="m2-arrow-3-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:280px;">1</div>
             </h4>
             <h4 id="m2-circle4">4</h4>
             <h4></h4>
@@ -263,7 +273,7 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-3-g"></div>
+                <div id="m2-arrow-3-6"></div>
             </h4>
             <h4></h4>
             <h4>
@@ -278,8 +288,8 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-4-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:155px;">1</div>
+                <div id="m2-arrow-4-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:155px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:50px; margin-left:300px;">t=0</div>
             </h4>
             <h4></h4>
@@ -294,7 +304,7 @@
             <h4></h4>
             <h4></h4>
             <h4>
-                <div class="m2-arrow-s-5"></div>
+                <div id="m2-arrow-0-5"></div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -311,7 +321,7 @@
 
         </div>
 
-        <div id="m3-disable" class="grid-container-map3 m3-disable m3-rescale">
+        <div class="grid-container-map3 m3-disable m3-rescale" id="m3">
             <!-- row1 -->
             <h4></h4>
             <h4></h4>
@@ -319,8 +329,8 @@
             <h4></h4>
             <h4 id="m3-circle0"><img src='png/Tom.png'></h4>
             <h4>
-                <div class="m3-arrow-s-2"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-180px; margin-left:180px;">3</div>
+                <div id="m3-arrow-0-2"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:180px;">3</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-130px; margin-left:-120px;">t=0</div>
                 <div class="time-color" style="font-size: 25px; margin-top:80px; margin-left:480px;">t=2</div>
             </h4>
@@ -332,10 +342,10 @@
 
             <!-- row2 -->
             <h4>
-                <div class="m3-arrow-s-1"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-150px; margin-left:355px;">4</div>
+                <div id="m3-arrow-0-1"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:355px;">4</div>
                 <div class="time-color" style="font-size: 25px; margin-top:60px; margin-left:200px;">t=1</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:160px; margin-left:-100px;">fuel=9</div>
+                <div class="fuel-color" style="font-size: 50px; margin-top:160px; margin-left:-100px;">fuel=9</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -369,14 +379,14 @@
             <h1></h1>
             <h4 id="m3-circle1">1</h4>
             <h4>
-                <div class="m3-arrow-1-3"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:40px;">1</div>
+                <div id="m3-arrow-1-3"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:40px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:180px;">t=2</div>
             </h4>
             <h4 id="m3-circle3">3</h4>
             <h4>
-                <div class="m3-arrow-3-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:40px;">1</div>
+                <div id="m3-arrow-3-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:40px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-25px; margin-left:180px;">t=2</div>
             </h4>
             <h4></h4>
@@ -394,13 +404,13 @@
             <h4></h4>
             <h4 id="m3-circle5">5</h4>
             <h4>
-                <div class="m3-arrow-2-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-190px; margin-left:40px;">2</div>
-                <div class="m3-arrow-2-g"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-120px; margin-left:160px;">8</div>
-                <div class="m3-arrow-5-g"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-120px; margin-left:230px;">t=4</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-70px; margin-left:60px;">2</div>
+                <div id="m3-arrow-2-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-80px; margin-left:40px;">2</div>
+                <div id="m3-arrow-2-6"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:160px;">8</div>
+                <div id="m3-arrow-5-6"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:-20px; margin-left:230px;">t=4</div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-40px; margin-left:60px;">2</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -410,13 +420,13 @@
             <h4></h4>
             <h4 id="m3-circle4">4</h4>
             <h4>
-                <div class="m3-arrow-1-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-130px; margin-left:-40px;">1</div>
-                <div class="m3-arrow-3-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-120px; margin-left:130px;">3</div>
-                <div class="m3-arrow-4-g"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:-130px;">t=3</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-40px; margin-left:400px;">5</div>
+                <div id="m3-arrow-1-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:-40px;">1</div>
+                <div id="m3-arrow-3-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-60px; margin-left:130px;">3</div>
+                <div id="m3-arrow-4-6"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:10px; margin-left:-130px;">t=3</div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:0px; margin-left:400px;">5</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -444,31 +454,31 @@
 
         </div>
 
-        <div id="m4-disable" class="grid-container-map4 m4-disable m4-rescale">
+        <div class="grid-container-map4 m4-disable m4-rescale" id="m4">
             <!-- row1 -->
             <h4></h4>
             <h4></h4>
             <h4 id="m4-circle1">1</h4>
             <h4>
-                <div class="m4-arrow-1-10"></div>
+                <div id="m4-arrow-1-10"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:-120px;">t=1</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:40px; margin-left:40px;">6</div>
             </h4>
             <h4 id="m4-circle10">10</h4>
             <h4>
-                <div class="m4-arrow-10-12"></div>
+                <div id="m4-arrow-10-12"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:-120px;">t=0</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:40px; margin-left:40px;">2</div>
             </h4>
             <h4 id="m4-circle12">12</h4>
             <h4>
-                <div class="m4-arrow-12-13"></div>
+                <div id="m4-arrow-12-13"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:-120px;">t=3</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:40px; margin-left:40px;">1</div>
             </h4>
             <h4 id="m4-circle13">13</h4>
             <h4>
-                <div class="m4-arrow-13-g"></div>
+                <div id="m4-arrow-13-14"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-350px; margin-left:-150px;">t=2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:350px; margin-left:-80px;">2</div>
             </h4>
@@ -493,8 +503,8 @@
             <h4></h4>
             <h4 id="m4-circle6">6</h4>
             <h4>
-                <div class="m4-arrow-6-10"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-150px; margin-left:-180px;">t=2</div>
+                <div id="m4-arrow-6-10"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:-50px; margin-left:-180px;">t=2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:0px; margin-left:-60px;">3</div>
             </h4>
             <h4></h4>
@@ -520,26 +530,27 @@
             <!-- row5 -->
             <h4 id="m4-circle0"><img src='png/Tom.png'></h4>
             <h4>
-                <div class="m4-arrow-s-2"></div>
+
+                <div id="m4-arrow-0-2"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-100px; margin-left:-120px;">t=0</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:40px; margin-left:10px;">2</div>
-                <div class="m4-arrow-s-1"></div>
+                <div id="m4-arrow-0-1"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-240px; margin-left:-20px;">3</div>
             </h4>
             <h4 id="m4-circle2">2</h4>
             <h4>
-                <div class="m4-arrow-2-6"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-10px; margin-left:-120px;">t=0</div>
+                <div id="m4-arrow-2-6"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:-30px; margin-left:-120px;">t=0</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-40px; margin-left:-40px;">4</div>
-                <div class="m4-arrow-5-6"></div>
+                <div id="m4-arrow-5-6"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-10px; margin-left:-10px;">4</div>
-                <div class="m4-arrow-6-8"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-300px; margin-left:180px;">2</div>
+                <div id="m4-arrow-6-8"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-280px; margin-left:150px;">2</div>
             </h4>
             <h4></h4>
             <h4 id="m4-circle8">8</h4>
             <h4>
-                <div class="m4-arrow-8-12"></div>
+                <div id="m4-arrow-8-12"></div>
                 <div class="time-color" style="font-size: 25px; margin-top:-30px; margin-left:-180px;">t=1</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-100px; margin-left:-70px;">3</div>
             </h4>
@@ -565,37 +576,38 @@
             <h4></h4>
             <h4 id="m4-circle3">3</h4>
             <h4>
-                <div class="m4-arrow-s-3"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-10px; margin-left:-100px;">t=3</div>
+                <div id="m4-arrow-0-3"></div>
+
+                <div class="time-color" style="font-size: 25px; margin-top:-30px; margin-left:-100px;">t=3</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-60px; margin-left:-140px;">3</div>
-                <div class="m4-arrow-3-4"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:80px; margin-left:-120px;">t=2</div>
+                <div id="m4-arrow-3-4"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:200px; margin-left:-120px;">t=2</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-240px; margin-left:-100px;">1</div>
-                <div class="m4-arrow-3-5"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:70px; margin-left:120px;">t=4</div>
+                <div id="m4-arrow-3-5"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:160px; margin-left:120px;">t=4</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-270px; margin-left:30px;">3</div>
             </h4>
             <h4></h4>
             <h4 id="m4-circle7">7</h4>
             <h4>
-                <div class="m4-arrow-7-8"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-50px; margin-left:-20px;">t=2</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-130px; margin-left:-80px;">2</div>
-                <div class="m4-arrow-5-7"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-120px; margin-left:-180px;">2</div>
+                <div id="m4-arrow-7-8"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:30px; margin-left:-20px;">t=2</div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-160px; margin-left:-80px;">2</div>
+                <div id="m4-arrow-5-7"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-40px; margin-left:-180px;">2</div>
             </h4>
             <h4 id="m4-circle9">9</h4>
             <h4>
-                <div class="m4-arrow-8-9"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:-50px; margin-left:-220px;">t=0</div>
+                <div id="m4-arrow-8-9"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:30px; margin-left:-220px;">t=0</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-150px; margin-left:-180px;">1</div>
-                <div class="m4-arrow-9-11"></div>
-                <div class="time-color" style="font-size: 25px; margin-top:80px; margin-left:50px;">t=1</div>
+                <div id="m4-arrow-9-11"></div>
+                <div class="time-color" style="font-size: 25px; margin-top:180px; margin-left:50px;">t=1</div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-230px; margin-left:-100px;">2</div>
-                <div class="m4-arrow-11-12"></div>
+                <div id="m4-arrow-11-12"></div>
                 <div class="fuel-color" style="font-size: 25px; margin-top:-530px; margin-left:-50px;">5</div>
-                <div class="m4-arrow-11-14"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-190px; margin-left:180px;">3</div>
+                <div id="m4-arrow-11-14"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-70px; margin-left:180px;">3</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-50px; margin-left:320px;">t=0</div>
                 <div class="fuel-color" style="font-size: 50px; margin-top:50px; margin-left:320px;">fuel=14</div>
             </h4>
@@ -646,7 +658,7 @@
 
         </div>
 
-        <div id="m5-disable" class="grid-container-map5 m5-disable m5-rescale">
+        <div class="grid-container-map5 m5-disable m5-rescale" id="m5">
             <!-- row1 -->
             <h4></h4>
             <h4></h4>
@@ -654,13 +666,15 @@
             <h4></h4>
             <h4 id="m5-circle0"><img src='png/Tom.png'></h4>
             <h4>
-                <div class="m5-arrow-s-1"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-100px; margin-left:-250px;">1</div>
-                <div class="time-color" style="font-size: 25px; margin-top:-250px; margin-left:-120px;">t=0</div>
+
+                <div id="m5-arrow-0-1"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:-250px;">1</div>
+                <div class="time-color" style="font-size: 25px; margin-top:-200px; margin-left:-120px;">t=0</div>
                 <div class="time-color" style="font-size: 25px; margin-top:180px; margin-left:-420px;">t=2</div>
-                <div class="m5-arrow-s-2"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-135px; margin-left:20px;">1</div>
-                <div class="time-color" style="font-size: 25px; margin-top:-40px; margin-left:180px;">t=3</div>
+                <div id="m5-arrow-0-2"></div>
+
+                <div class="fuel-color" style="font-size: 25px; margin-top:-100px; margin-left:20px;">1</div>
+                <div class="time-color" style="font-size: 25px; margin-top:10px; margin-left:180px;">t=3</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -686,16 +700,18 @@
             <h4></h4>
             <h4 id="m5-circle1">1</h4>
             <h4>
-                <div class="m5-arrow-s-3"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-135px; margin-left:150px;">3</div>
+
+                <div id="m5-arrow-0-4"></div>
+
+                <div class="fuel-color" style="font-size: 25px; margin-top:-50px; margin-left:150px;">3</div>
                 <div class="time-color" style="font-size: 25px; margin-top:100px; margin-left:100px;">t=1</div>
             </h4>
             <h4></h4>
             <h4></h4>
             <h4 id="m5-circle2">2</h4>
             <h4>
-                <div class="m5-arrow-2-3"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-115px; margin-left:-250px;">1</div>
+                <div id="m5-arrow-2-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:0px; margin-left:-250px;">1</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -719,10 +735,10 @@
             <h4></h4>
             <h4></h4>
             <h4></h4>
-            <h4 id="m5-circle3">3</h4>
+            <h4 id="m5-circle4">4</h4>
             <h4>
-                <div class="m5-arrow-3-4"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-115px; margin-left:-250px;">1</div>
+                <div id="m5-arrow-3-4"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-10px; margin-left:-250px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-40px; margin-left:-430px;">t=1</div>
             </h4>
             <h4></h4>
@@ -747,10 +763,10 @@
             <!-- row7 -->
             <h4></h4>
             <h4></h4>
-            <h4 id="m5-circle4">4</h4>
+            <h4 id="m5-circle3">3</h4>
             <h4>
-                <div class="m5-arrow-4-6"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-115px; margin-left:20px;">2</div>
+                <div id="m5-arrow-3-6"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-10px; margin-left:20px;">2</div>
                 <div class="time-color" style="font-size: 25px; margin-top:-10px; margin-left:180px;">t=5</div>
             </h4>
             <h4></h4>
@@ -758,8 +774,8 @@
             <h4></h4>
             <h4 id="m5-circle5">5</h4>
             <h4>
-                <div class="m5-arrow-2-5"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-250px; margin-left:-180px;">1</div>
+                <div id="m5-arrow-2-5"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-150px; margin-left:-180px;">1</div>
                 <div class="time-color" style="font-size: 25px; margin-top:180px; margin-left:-60px;">t=4</div>
             </h4>
             <h4></h4>
@@ -799,21 +815,21 @@
             <h4></h4>
             <h4 id="m5-circle8">8</h4>
             <h4>
-                <div class="m5-arrow-6-8"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-220px; margin-left:-130px;">4</div>
-                <div class="time-color" style="font-size: 25px; margin-top:50px; margin-left:-200px;">t=2</div>
-                <div class="m5-arrow-6-g"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-220px; margin-left:100px;">3</div>
+                <div id="m5-arrow-6-8"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-120px; margin-left:-130px;">4</div>
+                <div class="time-color" style="font-size: 25px; margin-top:10px; margin-left:-200px;">t=2</div>
+                <div id="m5-arrow-6-9"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-80px; margin-left:100px;">3</div>
                 <div class="time-color" style="font-size: 25px; margin-top:50px; margin-left:130px;">t=0</div>
-                <div class="m5-arrow-3-7"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-520px; margin-left:200px;">3</div>
-                <div class="time-color" style="font-size: 25px; margin-top:30px; margin-left:330px;">t=2</div>
+                <div id="m5-arrow-4-7"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-450px; margin-left:120px;">3</div>
+                <div class="time-color" style="font-size: 25px; margin-top:50px; margin-left:330px;">t=2</div>
             </h4>
             <h4 id="m5-circle9"><img src='png/Jerry.png'></h4>
             <h4>
-                <div class="m5-arrow-7-g"></div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-200px; margin-left:-80px;">3</div>
-                <div class="fuel-color" style="font-size: 25px; margin-top:-200px; margin-left:180px;">fuel=10</div>
+                <div id="m5-arrow-7-9"></div>
+                <div class="fuel-color" style="font-size: 25px; margin-top:-120px; margin-left:-80px;">3</div>
+                <div class="fuel-color" style="font-size: 50px; margin-top:-200px; margin-left:180px;">fuel=10</div>
             </h4>
             <h4></h4>
             <h4></h4>
@@ -847,7 +863,8 @@
             <select id="search" name="search" class="searchbtn">
       <option disabled>Select Search</option>
       <option value="iterative">Iterative Search</option>
-      <option value="uniform">Uniform Cost Search</option>
+      <option value="uniform" >Uniform Cost Search</option>
+      <option value="bidirectional">Bidirectional Uniform Cost Search</option>
     </select>
             <select id="delay" name="delay" class="delaybtn">
       <option disabled>Select Delay</option>
@@ -855,10 +872,12 @@
       <option value="2">2x</option>
       <option value="3">3x</option>
     </select>
-            <div id="fuel" class="shfuel">Fuel : </div>
-            <div id="time" class="shtime">Time : </div>
+            <div id="fuel" class="shfuel">Used Fuel : </div>
+            <div id="time" class="shtime">Traveled Time (Cost) : </div>
             <div id="path" class="shpath">Path : </div>
-            <h1 class="head">Star map</h1>
+            <div id="exctime" class="shexctime">Execute time : </div>
+            
+            <h1 class="head">Galaxy map</h1>
             <h3 class="step">Step &nbsp; : &nbsp; Press random map &nbsp; > &nbsp; Select search &nbsp; > &nbsp; Start</h3>
             <div id="MapObj" width="50%" height="100%"></div>
 

@@ -297,7 +297,7 @@ body {
 
 /*long arrow from s to 1*/
 
-.m5-arrow-s-1:after {
+#m5-arrow-0-1:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -306,7 +306,7 @@ body {
     transform: rotate(140deg);
 }
 
-.m5-arrow-s-1::before {
+#m5-arrow-0-1 {
     width: 210px;
     height: 5px;
     background: black;
@@ -321,7 +321,7 @@ body {
 
 /*long arrow from s to 2*/
 
-.m5-arrow-s-2:after {
+#m5-arrow-0-2:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -330,22 +330,22 @@ body {
     transform: rotate(40deg);
 }
 
-.m5-arrow-s-2::before {
+#m5-arrow-0-2 {
     width: 210px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -30px;
-    margin-left: -70px;
+    margin-top: -50px;
+    margin-left: -60px;
     transform: rotate(40deg);
 }
 
 
 /*long arrow from s to 3*/
 
-.m5-arrow-s-3:after {
+#m5-arrow-0-4:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -354,7 +354,7 @@ body {
     transform: rotate(90deg);
 }
 
-.m5-arrow-s-3::before {
+#m5-arrow-0-4 {
     width: 250px;
     height: 5px;
     background: black;
@@ -369,7 +369,7 @@ body {
 
 /*long arrow from 2 to 3*/
 
-.m5-arrow-2-3:after {
+#m5-arrow-2-4:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -378,7 +378,7 @@ body {
     transform: rotate(140deg);
 }
 
-.m5-arrow-2-3::before {
+#m5-arrow-2-4 {
     width: 210px;
     height: 5px;
     background: black;
@@ -393,7 +393,7 @@ body {
 
 /*long arrow from 3 to 4*/
 
-.m5-arrow-3-4:after {
+#m5-arrow-3-4:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -402,7 +402,7 @@ body {
     transform: rotate(140deg);
 }
 
-.m5-arrow-3-4::before {
+#m5-arrow-3-4 {
     width: 210px;
     height: 5px;
     background: black;
@@ -417,7 +417,7 @@ body {
 
 /*long arrow from 4 to 6*/
 
-.m5-arrow-4-6:after {
+#m5-arrow-3-6:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -426,7 +426,7 @@ body {
     transform: rotate(50deg);
 }
 
-.m5-arrow-4-6::before {
+#m5-arrow-3-6 {
     width: 210px;
     height: 5px;
     background: black;
@@ -441,7 +441,7 @@ body {
 
 /*long arrow from 2 to 5*/
 
-.m5-arrow-2-5:after {
+#m5-arrow-2-5:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -450,22 +450,22 @@ body {
     transform: rotate(70deg);
 }
 
-.m5-arrow-2-5::before {
+#m5-arrow-2-5 {
     width: 280px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -120px;
-    margin-left: -350px;
+    margin-top: -250px;
+    margin-left: -360px;
     transform: rotate(70deg);
 }
 
 
 /*long arrow from 6 to 8*/
 
-.m5-arrow-6-8:after {
+#m5-arrow-6-8:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -474,14 +474,14 @@ body {
     transform: rotate(120deg);
 }
 
-.m5-arrow-6-8::before {
+#m5-arrow-6-8 {
     width: 200px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -80px;
+    margin-top: -180px;
     margin-left: -200px;
     transform: rotate(120deg);
 }
@@ -489,7 +489,7 @@ body {
 
 /*long arrow from 6 to g*/
 
-.m5-arrow-6-g:after {
+#m5-arrow-6-9:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -498,14 +498,14 @@ body {
     transform: rotate(70deg);
 }
 
-.m5-arrow-6-g::before {
+#m5-arrow-6-9 {
     width: 180px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -80px;
+    margin-top: -110px;
     margin-left: -10px;
     transform: rotate(70deg);
 }
@@ -513,7 +513,7 @@ body {
 
 /*long arrow from 3 to 7*/
 
-.m5-arrow-3-7:after {
+#m5-arrow-4-7:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -522,22 +522,22 @@ body {
     transform: rotate(60deg);
 }
 
-.m5-arrow-3-7::before {
+#m5-arrow-4-7 {
     width: 380px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -480px;
-    margin-left: -10px;
+    margin-top: -900px;
+    margin-left: -50px;
     transform: rotate(60deg);
 }
 
 
 /*long arrow from 7 to g*/
 
-.m5-arrow-7-g:after {
+#m5-arrow-7-9:after {
     content: "";
     display: inline-block !important;
     vertical-align: middle;
@@ -546,14 +546,14 @@ body {
     transform: rotate(120deg);
 }
 
-.m5-arrow-7-g::before {
+#m5-arrow-7-9 {
     width: 200px;
     height: 5px;
     background: black;
     content: "";
     display: inline-block;
     vertical-align: middle;
-    margin-top: -60px;
-    margin-left: -150px;
+    margin-top: -120px;
+    margin-left: -160px;
     transform: rotate(120deg);
 }
