@@ -21,7 +21,7 @@ class searchNode {
         }
         else if(position==='right'){
             if (this.parent === null) {
-                return [this.state];
+                return [this.state,this.action.time];
             } else {
                 return (
                     [this.state, this.action.time, this.action.useFuel]+
@@ -36,7 +36,7 @@ class searchNode {
 
     pathCost() {
         if (this.parent === null) {
-            return 0;
+            return this.action?this.action.time:0;
         } else {
             return this.parent.pathCost() + this.action.time;
         }
@@ -119,8 +119,8 @@ module.exports.biunc = function uniformCost(map) {
         }
     };
     // Add the startPlanet to the Priority Queue.
-    priorityQueueA.enqueue(new searchNode(null, startPlanet, null));
-    priorityQueueB.enqueue(new searchNode(null, goalPlanet, null));
+    priorityQueueA.enqueue(new searchNode({time:map.Planets[0].time}, startPlanet, null));
+    priorityQueueB.enqueue(new searchNode({ time:map.Planets[map.Planets.length-1].time}, goalPlanet,null ));
     let expandedA = [];
     let expandedB = [];
     let allPathA =[];
@@ -186,14 +186,15 @@ module.exports.biunc = function uniformCost(map) {
             if ((goalTestLeft(newS) || expandedB.indexOf(newS) !== -1)) {
                 if(expandedB.indexOf(newS)!==-1){
                     let found = allPathB.find(item=>item.state===newS);
-                    found=found.parent;
                     console.log("FoundA",found);
+                    //found.action.time=0;
+                    //newN=newN.parent;
                     if(found){
                         console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
                         console.log("Path is "+newN.path('left')+" -> "+found.path('right'));
                         console.log("Continuing search to find optimal path.");
-                        if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
-                            shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                        if ((newN.pathCost()+found.pathCost()-found.action.time< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                            shortestPath.pathCost = newN.pathCost()+found.pathCost()-found.action.time;
                             shortestPath.path = newN.path('left')+" -> "+found.path('right');
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
@@ -260,14 +261,19 @@ module.exports.biunc = function uniformCost(map) {
             if (goalTestRight(newS)|| expandedA.indexOf(newS) !== -1 ) {
                 if(expandedA.indexOf(newS)!==-1){
                     let found = allPathA.find(item=>item.state===newS);
-                    // found=found.parent;
+                    // found.action.time=0;
+                    // console.log(allPathA);
+                    //found=found.parent;
+                    //newN=newN.parent;
                     console.log("FoundB",found);
+                    console.log("newN",newN);
                     if(found){
-                        console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
+                        console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost()-found.action.time,"Shortest",shortestPath.pathCost);
+                        console.log("Use fuel:",newN.usedFuel()+found.usedFuel(),found.usedFuel(),newN.usedFuel(),"limit",fuelLimit);
                         console.log("Path is "+found.path('left')+" -> "+newN.path('right'))
                         console.log("Continuing search to find optimal path.");
-                        if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
-                            shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                        if ((newN.pathCost()+found.pathCost()-found.action.time< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                            shortestPath.pathCost = newN.pathCost()+found.pathCost()-found.action.time;
                             shortestPath.path = found.path('left')+" -> "+newN.path('right');
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
