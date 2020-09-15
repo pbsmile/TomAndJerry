@@ -130,6 +130,8 @@ module.exports.biunc = function uniformCost(map) {
         pathCost: null,
         path: null,
         usedFuel: null,
+        leftPath:null,
+        rightPath:null
     };
     while (priorityQueueA.length !== 0 && priorityQueueB.length !== 0) {
         // console.log("priorityQueue: " + priorityQueue.map(function(planet){
@@ -198,6 +200,8 @@ module.exports.biunc = function uniformCost(map) {
                             shortestPath.path = newN.path('left')+" -> "+found.path('right');
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                            shortestPath.leftPath=newN.path('left');
+                            shortestPath.rightPath=found.path('right');
                         }
                     }
                 }
@@ -277,6 +281,8 @@ module.exports.biunc = function uniformCost(map) {
                             shortestPath.path = found.path('left')+" -> "+newN.path('right');
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                            shortestPath.leftPath = found.path('left');
+                            shortestPath.rightPath = newN.path('right');
                         }
                     }
                 }
@@ -338,6 +344,8 @@ module.exports.biunc = function uniformCost(map) {
             " and used fuel are " +
             shortestPath.usedFuel
         );
+        console.log("left path is "+shortestPath.leftPath);
+        console.log("right path is "+shortestPath.rightPath);
     }
 };
 function goalTestLeft(state) {
