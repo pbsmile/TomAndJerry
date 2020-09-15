@@ -115,7 +115,7 @@ module.exports.unc = function uniformCost(map) {
             // returns the path to the goal.
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
-                console.log("Path is "+newN.path('right'));
+                console.log("Path is "+newN.path());
                 console.log("Continuing search to find optimal path.");
                 if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<=fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
