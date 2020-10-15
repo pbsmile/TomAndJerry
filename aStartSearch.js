@@ -43,52 +43,69 @@ class searchNode {
         }
     }
 }
-let mapPlanets = new Map();
 let goalPlanet=null;
+let mapPlanets = new Map();
 let startPlanet=null;
-module.exports.unc = function uniformCost(map) {
+module.exports.aStarSearch = function aStarSearch(map) {
+    // The aStartQueue is a Priority Queue
+    // Actions other than shift() and enqueue() are prohibited.
     startPlanet = map.startPlanet;
     goalPlanet = map.endPlanet;
-    console.log(map.endPlanet)
     const fuelLimit = map.fuelLimit;
     for (let i = 0; i < map.Planets.length; i++) {
         mapPlanets.set(i, map.Planets[i].linkedPlanets);
     }
-    // console.log(mapPlanets)
+    let aStartQueue = [];
     if (goalTest(startPlanet)) {
         console.log("Initial state is the goal state.");
         return [startPlanet];
     }
-    // It is a Priority Queue
-    // Actions other than shift() and enqueue() are prohibited.
-    let priorityQueue = [];
-    priorityQueue.enqueue = function (item) {
+    aStartQueue.enqueue = function(item) {
         let added = false;
-        for (let i = 0; i < priorityQueue.length; i++) {
-            console.log("ITEM: ", priorityQueue[i].state);
-            console.log("COST: ", priorityQueue[i].pathCost());
-            if (item.pathCost() < priorityQueue[i].pathCost()) {
-                priorityQueue.splice(i, 0, item);
+
+        let heuristic = null;
+        // Finding heuristic value
+        for (let i = 0; i < map.Planets.length; i++) {
+            if (map.Planets[i].planetNumber === item.state) {
+                heuristic = map.Planets[i].time;
+            }
+        }
+
+        function findHeuristic(item) {
+            for (let i = 0; i < map.Planets.length; i++) {
+                if (map.Planets[i].planetNumber === item.state) {
+                    return map.Planets[i].time;
+                }
+            }
+        }
+
+        for (let i = 0; i < aStartQueue.length; i++) {
+            console.log("Iteration in aStartQueue: ", aStartQueue[i].state);
+            console.log("COST: ", aStartQueue[i].pathCost(), "HEURISTIC COST: ", findHeuristic(aStartQueue[i]), "TOTAL COST: ", aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]));
+            if (item.pathCost() + heuristic < aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i])) {
+                aStartQueue.splice(i, 0, item);
                 added = true;
                 return;
             }
         }
 
         if (!added) {
-            priorityQueue.push(item);
+            aStartQueue.push(item);
         }
     };
-    // Add the startPlanet to the Priority Queue.
-    priorityQueue.enqueue(new searchNode(null, startPlanet, null));
+
+    // Add the initialState to the aStartQueue.
+    aStartQueue.enqueue(new searchNode(null, startPlanet, null));
     let expanded = [];
     let shortestPath = {state: null, pathCost: null, path: null,usedFuel:null};
-    while(priorityQueue.length !== 0){
-        console.log("priorityQueue: " + priorityQueue.map(function(planet){
-            return planet.state;
-        }));
+
+    while (aStartQueue.length !== 0) {
+        console.log("aStartQueue: " + aStartQueue.map(function(city){
+                return city.state;
+            }));
 
         // Pop an element out of the queue to expand.
-        let parent = priorityQueue.shift();
+        let parent = aStartQueue.shift();
         console.log("Popped: ", parent.state);
         let newChildStates = [];
 
@@ -96,28 +113,26 @@ module.exports.unc = function uniformCost(map) {
         let actionsList = actions(parent.state);
         console.log("Found " + actionsList.length + " successors of " + parent.state + " : "
             + actionsList.map(function(item){
-                return item.planetNumber;
+                return item.name;
             }));
 
-        
         // Add the node to the expanded list to prevent re-expansion.
         expanded.push(parent.state);
         console.log("Expanded list: ", expanded);
         console.log("\n");
 
-        // Create successors of each node and push them onto the fringe.
+        // Create successors of each node and push them onto the aStartQueue.
         for (let i = 0; i < actionsList.length; i++) {
             let newS = successor(parent.state, actionsList[i]);
             let newN = new searchNode(actionsList[i], newS, parent);
-            console.log(actionsList[i],parent,newN);
-            
+
             // If the goal is found,
             // returns the path to the goal.
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
-                console.log("Path is "+newN.path());
+                console.log("used fuel"+newN.usedFuel(),"Limit is ",fuelLimit)
                 console.log("Continuing search to find optimal path.");
-                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<=fuelLimit) {
+                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path();
                     shortestPath.state = newS;
@@ -126,34 +141,34 @@ module.exports.unc = function uniformCost(map) {
             }
 
             // If the successor is already expanded,
-            // don't add it to the priorityQueue.
+            // don't add it to the aStartQueue.
             else if (expanded.indexOf(newS) !== -1) {
                 console.log("Successor " + newS + " of " + parent.state + " already expanded.");
-                console.log("Not adding " + newS + " to the priorityQueue.");
+                console.log("Not adding " + newS + " to the aStartQueue.");
                 console.log("\n");
             }
 
-            // Push new successors to the priorityQueue.
+            // Push new successors to the aStartQueue.
             else {
                 console.log("Discovered " + newN.state + " with step cost "
-                    + actionsList[i].time + " from " + parent.state);
-                console.log("Pushing to priorityQueue: " + newS);
+                    + actionsList[i].cost + " from " + parent.state);
+                console.log("Pushing to aStartQueue: " + newS);
                 newChildStates.push(newS);
-                priorityQueue.enqueue(newN);
+                aStartQueue.enqueue(newN);
                 console.log("Path: ", newN.path());
-                console.log("Current priorityQueue: " + priorityQueue.map(function(planet){
-                        return planet.state;
+                console.log("Current aStartQueue: " + aStartQueue.map(function(city){
+                        return city.state;
                     }));
                 console.log("\n");
             }
         }
     }
     if (shortestPath.pathCost === null) {
-        console.log("Couldn't find path.") 
+        console.log("Couldn't find path."); 
     } else {
         console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel );
     }
-}  
+}
 function goalTest(state) {
     return state === goalPlanet;
 }

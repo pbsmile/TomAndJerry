@@ -201,7 +201,7 @@ module.exports.biunc = function uniformCost(map) {
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
                             shortestPath.leftPath=newN.path('left');
-                            shortestPath.rightPath=found.path('right');
+                            shortestPath.rightPath=found.path('left');
                         }
                     }
                 }
@@ -282,7 +282,7 @@ module.exports.biunc = function uniformCost(map) {
                             shortestPath.state = newS;
                             shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
                             shortestPath.leftPath = found.path('left');
-                            shortestPath.rightPath = newN.path('right');
+                            shortestPath.rightPath = newN.path('left');
                         }
                     }
                 }
