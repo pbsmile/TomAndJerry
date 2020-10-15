@@ -921,8 +921,7 @@ function initial(){
     window.strPath = "";
     window.strPath1 = "";
 
-    window.checkfinalLeft = "";
-    window.checkfinalRight = "";
+    window.finalPath = "";
     
     window.show = [];
     window.show1 = [];
@@ -1043,7 +1042,7 @@ function start() {
     else if (strSearch == 'bidirectional') {
       result1.style.visibility = "hidden";
       result2.style.visibility = "visible";
-      
+      exctimeEle = document.getElementById("exctime-bi");
       fuelEle = document.getElementById("fuel-bi");
       timeEle = document.getElementById("time-bi");
       pathEle = document.getElementById("path-bi");
@@ -1052,6 +1051,7 @@ function start() {
       executionTime = Date.now() - start;
       nodeVisited();
       nodeVisitedbi();
+      //pathEle.innerHTML += shortestPath.path;
   }
   exctimeEle.innerHTML += executionTime + ' milliseconds';
 }
@@ -1065,6 +1065,10 @@ function nodeVisited() {
         if(i%2==0)
         {
           var thisShow = show[i/2];
+          if(thisShow == null){
+            thisShow = show[show.length-1];
+          }
+          console.log(thisShow);
           for (var c = 0; c < thisShow.length; c++){
             if(c == 0){
               strPath += c;
@@ -1101,6 +1105,7 @@ function nodeVisited() {
               if(arrow != null) arrow.style.backgroundColor="yellow";
               c += 6;
             }
+            console.log('start : ',time,currentFuel,firstPlanet,secondPlanet,idArrow);
           }
           //if (strPath.charAt(strPath.length-1) ==strPath1.charAt(strPath.length-1)) i = show.length*2;
           resetDelay = delay;
@@ -1113,7 +1118,9 @@ function nodeVisited() {
           currentFuel= 0;
         }
         i++; //  increment the counter
-        if (i < show.length*2-1) {
+        var count = show.length;
+        if(show1.length > show.length) count = show1.length;
+        if (i < count*2-1) {
             myLoop(); //  ..  again which will trigger another 
         } //  ..  setTimeout()
 
@@ -1152,7 +1159,10 @@ function nodeVisitedbi(){
                 else var firstPlanet = strPath1.charAt(strPath1.length-1);
               } 
               else if(goal<10 && c!=4) var firstPlanet = strPath1.charAt(strPath1.length-1);
-              else var firstPlanet = goal;
+              else {
+                if(goal<10 && thisShow[0] != goal) firstPlanet = thisShow[0];
+                var firstPlanet = goal;
+              }
               var secondPlanet = thisShow[c+2];
               var num = c;
                 if(thisShow[c+3]>='0' && thisShow[c+3]<='9'){
@@ -1179,7 +1189,7 @@ function nodeVisitedbi(){
               if(arrow != null) arrow.style.backgroundColor="yellow";
               c += 6;
             }
-            console.log(time,currentFuel,firstPlanet,secondPlanet,idArrow);
+            console.log('goal : ',time,currentFuel,firstPlanet,secondPlanet,idArrow);
           }
           //if (thisShow == checkfinalRight) i = show.length*2;
           resetDelay = delay;
@@ -1192,7 +1202,9 @@ function nodeVisitedbi(){
           currentFuel= 0;
         }
         i++; //  increment the counter
-        if (i < show.length*2-1) {
+        var count = show1.length;
+        if(show.length > show1.length) count = show.length;
+        if (i < count*2-1) {
             myLoop(); //  ..  again which will trigger another 
         } //  ..  setTimeout()
 
@@ -1414,6 +1426,7 @@ function uniformCost(mapUse) {
             // returns the path to the goal.
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
+                show.push(newN.path());
                 console.log("Continuing search to find optimal path.");
                 if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<=fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
@@ -1495,7 +1508,7 @@ class searchNodeBi {
       }
       else if(position==='right'){
           if (this.parent === null) {
-              return [this.state];
+              return [this.state,this.action.time];
           } else {
               return (
                   [this.state, this.action.time, this.action.useFuel]+
@@ -1510,7 +1523,7 @@ class searchNodeBi {
 
   pathCost() {
       if (this.parent === null) {
-          return 0;
+          return this.action?this.action.time:0;
       } else {
           return this.parent.pathCost() + this.action.time;
       }
@@ -1571,82 +1584,82 @@ function bidirectional(map) {
           }
       }
       if (!added) {
-          priorityQueueA.push(item);
-      }
-  };
-  priorityQueueB.enqueue = function (item) {
-      let added = false;
-      for (let i = 0; i < priorityQueueB.length; i++) {
-          console.log("ITEM: ", priorityQueueB[i].state);
-          console.log("COST: ", priorityQueueB[i].pathCost());
-          if (item.pathCost() < priorityQueueB[i].pathCost()) {
-              priorityQueueB.splice(i, 0, item);
-              added = true;
-              return;
-          }
-      }
-      if (!added) {
-          priorityQueueB.push(item);
-      }
-  };
-  // Add the startPlanet to the Priority Queue.
-  priorityQueueA.enqueue(new searchNodeBi(null, startPlanet, null));
-  priorityQueueB.enqueue(new searchNodeBi(null, goalPlanet, null));
-  let expandedA = [];
-  let expandedB = [];
-  let allPathA =[];
-  let allPathB = [];
-  let shortestPath = {
-      state: null,
-      pathCost: null,
-      path: null,
-      usedFuel: null,
-  };
-  while (priorityQueueA.length !== 0 && priorityQueueB.length !== 0) {
-      // console.log("priorityQueue: " + priorityQueue.map(function(planet){
-      //     return planet.state;
-      // }));
-      // Pop an element out of the queue to expand.
-      let parentA = priorityQueueA.shift();
-      let parentB = priorityQueueB.shift();
-      console.log("Popped A: ", parentA.state);
-      console.log("Popped B: ", parentB.state);
-      let newChildStatesA = [];
-      let newChildStatesB = [];
-      // Child states of the current node
-      let actionsListA = actions(parentA.state);
-      console.log(
-          "Found " +
-          actionsListA.length +
-          " successors of " +
-          parentA.state +
-          " : " +
-          actionsListA.map(function (item) {
-              return item.planetNumber;
-          })
-      );
-      let actionsListB = actions(parentB.state);
-      console.log(
-          "Found " +
-          actionsListB.length +
-          " successors of " +
-          parentB.state +
-          " : " +
-          actionsListB.map(function (item) {
-              return item.planetNumber;
-          })
-      );
-      // Add the node to the expanded list to prevent re-expansion.
-      expandedA.push(parentA.state);
-      expandedB.push(parentB.state);
-      
-      allPathA.push(parentA);
-      allPathB.push(parentB);
-      console.log("Expanded A list: ", expandedA);
-      console.log("Expanded B list: ", expandedB);
-      // Create successors of each node and push them onto the priorityQueue.
-      // Create successors of each node and push them onto the priorityQueue.
-      for (let i = 0; i < actionsListA.length; i++) {
+        priorityQueueA.push(item);
+    }
+};
+priorityQueueB.enqueue = function (item) {
+    let added = false;
+    for (let i = 0; i < priorityQueueB.length; i++) {
+        console.log("ITEM: ", priorityQueueB[i].state);
+        console.log("COST: ", priorityQueueB[i].pathCost());
+        if (item.pathCost() < priorityQueueB[i].pathCost()) {
+            priorityQueueB.splice(i, 0, item);
+            added = true;
+            return;
+        }
+    }
+    if (!added) {
+        priorityQueueB.push(item);
+    }
+};
+// Add the startPlanet to the Priority Queue.
+priorityQueueA.enqueue(new searchNodeBi({time:map.Planets[0].time}, startPlanet, null));
+priorityQueueB.enqueue(new searchNodeBi({ time:map.Planets[map.Planets.length-1].time}, goalPlanet,null ));
+let expandedA = [];
+let expandedB = [];
+let allPathA =[];
+let allPathB = [];
+let shortestPath = {
+    state: null,
+    pathCost: null,
+    path: null,
+    usedFuel: null,
+    leftPath:null,
+    rightPath:null
+};
+while (priorityQueueA.length !== 0 && priorityQueueB.length !== 0) {
+    // console.log("priorityQueue: " + priorityQueue.map(function(planet){
+    //     return planet.state;
+    // }));
+    // Pop an element out of the queue to expand.
+    let parentA = priorityQueueA.shift();
+    let parentB = priorityQueueB.shift();
+    console.log("Popped A: ", parentA.state);
+    console.log("Popped B: ", parentB.state);
+    let newChildStatesA = [];
+    let newChildStatesB = [];
+    // Child states of the current node
+    let actionsListA = actionsBi(parentA.state);
+    console.log(
+        "Found " +
+        actionsListA.length +
+        " successors of " +
+        parentA.state +
+        " : " +
+        actionsListA.map(function (item) {
+            return item.planetNumber;
+        })
+    );
+    let actionsListB = actionsBi(parentB.state);
+    console.log(
+        "Found " +
+        actionsListB.length +
+        " successors of " +
+        parentB.state +
+        " : " +
+        actionsListB.map(function (item) {
+            return item.planetNumber;
+        })
+    );
+    // Add the node to the expanded list to prevent re-expansion.
+    expandedA.push(parentA.state);
+    expandedB.push(parentB.state);
+    allPathA.push(parentA);
+    allPathB.push(parentB);
+    console.log("Expanded A list: ", expandedA);
+    console.log("Expanded B list: ", expandedB);
+    // Create successors of each node and push them onto the priorityQueue.
+    for (let i = 0; i < actionsListA.length; i++) {
         let newS = successor(parentA.state, actionsListA[i]);
         let newN = new searchNodeBi(actionsListA[i], newS, parentA);
         //console.log(actionsListA[i], parentA, newN);
@@ -1655,19 +1668,22 @@ function bidirectional(map) {
         if ((goalTestLeft(newS) || expandedB.indexOf(newS) !== -1)) {
             if(expandedB.indexOf(newS)!==-1){
                 let found = allPathB.find(item=>item.state===newS);
-                found=found.parent;
                 console.log("FoundA",found);
+                //found.action.time=0;
+                //newN=newN.parent;
                 if(found){
                     console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
                     console.log("Path is "+newN.path('left')+" -> "+found.path('right'));
+                    show.push(newN.path('left'));
+                    show1.push(found.path('left'));
                     console.log("Continuing search to find optimal path.");
-                    if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
-                        shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                    if ((newN.pathCost()+found.pathCost()-found.action.time< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                        shortestPath.pathCost = newN.pathCost()+found.pathCost()-found.action.time;
                         shortestPath.path = newN.path('left')+" -> "+found.path('right');
-                        checkfinalLeft = newN.path('left');
-                        checkfinalRight = newN.path('right');
                         shortestPath.state = newS;
                         shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                        shortestPath.leftPath=newN.path('left');
+                        shortestPath.rightPath=found.path('left');
                     }
                 }
             }
@@ -1677,11 +1693,11 @@ function bidirectional(map) {
             else {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
                 console.log("Path is "+newN.path('left'));
+                show.push(newN.path('left'));
                 console.log("Continuing search to find optimal path.");
                 if ((newN.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()<= fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path('left');
-                    checkfinalLeft = newN.path('left');
                     shortestPath.state = newS;
                     shortestPath.usedFuel = newN.usedFuel();
                 }
@@ -1710,8 +1726,8 @@ function bidirectional(map) {
             console.log("Pushing to priorityQueue: " + newS);
             newChildStatesA.push(newS);
             priorityQueueA.enqueue(newN);
-            show.push(newN.path('left'));
             console.log("Path: ", newN.path('left'));
+            show.push(newN.path('left'));
             console.log(
                 "Current priorityQueueA: " +
                 priorityQueueA.map(function (planet) {
@@ -1730,30 +1746,37 @@ function bidirectional(map) {
         if (goalTestRight(newS)|| expandedA.indexOf(newS) !== -1 ) {
             if(expandedA.indexOf(newS)!==-1){
                 let found = allPathA.find(item=>item.state===newS);
-                // found=found.parent;
+                // found.action.time=0;
+                // console.log(allPathA);
+                //found=found.parent;
+                //newN=newN.parent;
                 console.log("FoundB",found);
+                console.log("newN",newN);
                 if(found){
-                    console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost());
-                    console.log("Path is "+found.path('left')+" -> "+newN.path('right'));
+                    console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost()+found.pathCost()-found.action.time,"Shortest",shortestPath.pathCost);
+                    console.log("Use fuel:",newN.usedFuel()+found.usedFuel(),found.usedFuel(),newN.usedFuel(),"limit",fuelLimit);
+                    console.log("Path is "+found.path('left')+" -> "+newN.path('right'))
+                    show.push(found.path('left'));
+                    show1.push(newN.path('left'));
                     console.log("Continuing search to find optimal path.");
-                    if ((newN.pathCost()+found.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
-                        shortestPath.pathCost = newN.pathCost()+found.pathCost();
+                    if ((newN.pathCost()+found.pathCost()-found.action.time< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()+found.usedFuel()<= fuelLimit) {
+                        shortestPath.pathCost = newN.pathCost()+found.pathCost()-found.action.time;
                         shortestPath.path = found.path('left')+" -> "+newN.path('right');
-                        checkfinalLeft = newN.path('left');
-                        checkfinalRight = newN.path('right');
                         shortestPath.state = newS;
                         shortestPath.usedFuel = newN.usedFuel()+found.usedFuel();
+                        shortestPath.leftPath = found.path('left');
+                        shortestPath.rightPath = newN.path('left');
                     }
                 }
             }
             else {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
                 console.log("Path is "+newN.path('right'));
+                show1.push(newN.path('right'));
                 console.log("Continuing search to find optimal path.");
                 if ((newN.pathCost()< shortestPath.pathCost ||shortestPath.pathCost === null) &&newN.usedFuel()<= fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path('right');
-                    checkfinalRight = newN.path('right');
                     shortestPath.state = newS;
                     shortestPath.usedFuel = newN.usedFuel();
                 }
@@ -1804,78 +1827,21 @@ if (shortestPath.pathCost === null) {
         " and used fuel are " +
         shortestPath.usedFuel
     );
+    finalPath = shortestPath.path;
+    show.push(shortestPath.leftPath);
+    show1.push(shortestPath.rightPath);
+    console.log("left path is "+shortestPath.leftPath);
+    console.log("right path is "+shortestPath.rightPath);
 }
 };
 function goalTestLeft(state) {
-  return state === goalPlanet;
+return state === goalPlanet;
 }
 function goalTestRight(state) {
-  return state === startPlanet;
+return state === startPlanet;
 }
-
-
-
-
-/*--------------- iterative deepening search is here --------------*/
-
-function iterativeDeepeningSearch(mapUse) {
-  var depth = 1;
-  const start = mapUse.startPlanet;
-  goal = mapUse.endPlanet;
-  const fuelLimit = mapUse.fuelLimit;
-  const planets = mapUse.Planets;
-  var currentFuel = 0;
-  var time = 0;
-
-  //increase depth here
-  while (!bottomReached) {
-      bottomReached = true;
-      show1 = [];
-      var result = deepeningSearch(start, goal, 0, depth, currentFuel, fuelLimit, planets, time);
-      if (result != null) {
-          return result;
-      }
-      depth += 1;
-      console.log("Increasing depth to " + depth);
-  }
-
-  return null;
-}
-
-//Search each iteration here
-function deepeningSearch(currentPlanet, goal, currentDepth, maxDepth, currentFuel, fuelLimit, planets, time) {
-  if (currentFuel <= fuelLimit) {
-      show1.push(currentPlanet);
-      setString(currentFuel,time,currentPlanet);
-      if (currentPlanet === goal) {
-          // We have found the goal node we're searching for
-          console.log("Tom has found Jerry!");
-          return currentPlanet;
-      }
-      if (currentDepth === maxDepth) {
-          console.log("Current maximum depth reached, returning...");
-          // We have reached the end for this depth...
-          if (planets[currentPlanet].linkedPlanets.length > 0) {
-              //...but we have not yet reached the bottom of the tree
-              bottomReached = false;
-              currentFuel = 0;
-              time = 0
-              console.log("Haven't reach bottom yet.");
-          }
-          return null;
-      }
-      // Recurse with all children
-      for (var i = 0; i < planets[currentPlanet].linkedPlanets.length; i++) {
-          console.log("Visiting Planet " + currentPlanet);
-          show.push(currentPlanet);
-          currentFuel += planets[currentPlanet].linkedPlanets[i].useFuel;
-          time = planets[currentPlanet].time;
-          if(show1.indexOf(planets[currentPlanet].linkedPlanets[i].planetNumber) == -1)
-          var result = deepeningSearch(planets[currentPlanet].linkedPlanets[i].planetNumber, goal, currentDepth + 1, maxDepth, currentFuel, fuelLimit, planets, time);
-          if (result != null) {
-              // We've found the goal node while going down that child
-              return result;
-          }
-      }
-  }
+function actionsBi(state) {
+// Returns an array of objects
+// [{ useFuel: int, time: integer,planetNumber:int }, ... ]
+return mapPlanets.get(state);
 }
