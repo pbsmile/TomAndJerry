@@ -865,6 +865,7 @@
       <!---option value="iterative">Iterative Search</option--->
       <option value="uniform" >Uniform Cost Search</option>
       <option value="bidirectional">Bidirectional Uniform Cost Search</option>
+      <option value="a_star">A* Search</option>
     </select>
             <select id="delay" name="delay" class="delaybtn">
       <option disabled>Select Delay</option>
@@ -898,6 +899,12 @@
         <div id="path-g" class="shpath-g">Path From GOAL : </div><br/>
         <div id="path-bi" class="shpath-s-g"><b>Path </b>: </div>
         <div id="exctime-bi" class="shexctime-s-g"><b>Execute time </b>: </div>
+    </div>
+    <div id="result-3">
+        <div id="fuel-a" class="shfuel-a">Used Fuel : </div>
+            <div id="time-a" class="shtime-a">Traveled Time (Cost) : </div>
+            <div id="path-a" class="shpath-a">Path : </div>
+            <div id="exctime-a" class="shexctime-a">Execute time : </div>
     </div>
         <section class="wrapper">
             <div id="stars"></div>
