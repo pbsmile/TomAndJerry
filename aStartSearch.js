@@ -64,12 +64,13 @@ module.exports.aStarSearch = function aStarSearch(map) {
         let added = false;
 
         let heuristic = null;
-        // Finding heuristic value
+        // Finding heuristic value //On Optional 
         for (let i = 0; i < map.Planets.length; i++) {
             if (map.Planets[i].planetNumber === item.state) {
                 heuristic = map.Planets[i].time;
             }
         }
+        console.log(heuristic, item)
 
         function findHeuristic(item) {
             for (let i = 0; i < map.Planets.length; i++) {
@@ -82,7 +83,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
         for (let i = 0; i < aStartQueue.length; i++) {
             console.log("Iteration in aStartQueue: ", aStartQueue[i].state);
             console.log("COST: ", aStartQueue[i].pathCost(), "HEURISTIC COST: ", findHeuristic(aStartQueue[i]), "TOTAL COST: ", aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]));
-            if (item.pathCost() + heuristic < aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i])) {
+            if ((item.pathCost() + heuristic < aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]))&&item.usedFuel()<fuelLimit&&aStartQueue[i].usedFuel()<fuelLimit) {
                 aStartQueue.splice(i, 0, item);
                 added = true;
                 return;
@@ -113,7 +114,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
         let actionsList = actions(parent.state);
         console.log("Found " + actionsList.length + " successors of " + parent.state + " : "
             + actionsList.map(function(item){
-                return item.name;
+                return item.planetNumber;
             }));
 
         // Add the node to the expanded list to prevent re-expansion.
@@ -130,9 +131,10 @@ module.exports.aStarSearch = function aStarSearch(map) {
             // returns the path to the goal.
             if (goalTest(newS)) {
                 console.log("FOUND GOAL!", newS, " with path cost ", newN.pathCost());
-                console.log("used fuel"+newN.usedFuel(),"Limit is ",fuelLimit)
+                console.log("used fuel"+ newN.usedFuel(),"Limit is ",fuelLimit)
+                console.log("path:",newN.path())
                 console.log("Continuing search to find optimal path.");
-                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)) {
+                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path();
                     shortestPath.state = newS;
@@ -166,7 +168,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
     if (shortestPath.pathCost === null) {
         console.log("Couldn't find path."); 
     } else {
-        console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel );
+        console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel+". Limit is ",fuelLimit );
     }
 }
 function goalTest(state) {
