@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',initial);
-
+000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 /*------------------------- map is here -------------------------*/
 let mapstruct = [
