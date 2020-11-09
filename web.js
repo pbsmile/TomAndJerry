@@ -4,5 +4,5 @@ const {map} = require('./map.js');
 // const {biunc} = require('./bidirectionalUniformCost.js');
 const {aStarSearch} = require('./aStartSearch.js')
 console.log("map1 is: "+map[0]);
-aStarSearch(map[2]);
+aStarSearch(map[4]);
 //ids(map[0]);

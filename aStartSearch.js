@@ -83,7 +83,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
         for (let i = 0; i < aStartQueue.length; i++) {
             console.log("Iteration in aStartQueue: ", aStartQueue[i].state);
             console.log("COST: ", aStartQueue[i].pathCost(), "HEURISTIC COST: ", findHeuristic(aStartQueue[i]), "TOTAL COST: ", aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]));
-            if ((item.pathCost() + heuristic < aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]))&&item.usedFuel()<fuelLimit&&aStartQueue[i].usedFuel()<fuelLimit) {
+            if ((item.pathCost() + heuristic < aStartQueue[i].pathCost() + findHeuristic(aStartQueue[i]))&&item.usedFuel()<=fuelLimit&&aStartQueue[i].usedFuel()<=fuelLimit) {
                 aStartQueue.splice(i, 0, item);
                 added = true;
                 return;
@@ -134,7 +134,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
                 console.log("used fuel"+ newN.usedFuel(),"Limit is ",fuelLimit)
                 console.log("path:",newN.path())
                 console.log("Continuing search to find optimal path.");
-                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<fuelLimit) {
+                if ((newN.pathCost() < shortestPath.pathCost || shortestPath.pathCost === null)&&newN.usedFuel()<=fuelLimit) {
                     shortestPath.pathCost = newN.pathCost();
                     shortestPath.path = newN.path();
                     shortestPath.state = newS;
