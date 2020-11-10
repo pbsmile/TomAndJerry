@@ -152,6 +152,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
 
             // Push new successors to the aStartQueue.
             else {
+                show.push(newN.path());
                 console.log("Discovered " + newN.state + " with step cost "
                     + actionsList[i].cost + " from " + parent.state);
                 console.log("Pushing to aStartQueue: " + newS);
@@ -168,6 +169,7 @@ module.exports.aStarSearch = function aStarSearch(map) {
     if (shortestPath.pathCost === null) {
         console.log("Couldn't find path."); 
     } else {
+        show.push(shortestPath.path);
         console.log(shortestPath.path + " with path cost of time " + shortestPath.pathCost +" and used fuel are " +shortestPath.usedFuel+". Limit is ",fuelLimit );
     }
 }
